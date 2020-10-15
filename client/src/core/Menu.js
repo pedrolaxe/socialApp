@@ -12,12 +12,12 @@ const isActive = (history, path) => {
 }
 
 const Menu = (props) => (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary"  
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top"  
         style={{ 
             //background: "#007991", 
             //paddingTop: "15px",
             paddingBottom: "0",
-            marginBottom: "50px"
+            marginBottom: "100px"
 
         }}
     >

@@ -6,6 +6,7 @@ import Loading from '../loading/Loading';
 import DefaultProfile from '../images/avatar.jpg'
 import { timeDifference } from './timeDifference';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import '../css/Global.css'
 
 class Posts extends Component {
     constructor() {
@@ -55,7 +56,7 @@ class Posts extends Component {
                     loader={<Loading />}
                     endMessage={
                         <p style={{ textAlign: 'center' }}>
-                            <b>All posts rendered.. Please refresh to see new posts if any</b>
+                            <b>All posts rendered.. Please refresh to see new posts.</b>
                         </p>
                     }
                 >
@@ -63,7 +64,10 @@ class Posts extends Component {
                         const posterId = post.postedBy ? post.postedBy._id : "";
                         const posterName = post.postedBy ? post.postedBy.name : " Unknown";
                         return (
-                            <div key={i} className="card col-md-12 mb-5" style={{ padding: "0" }} >
+                            <div key={i} className="card col-md-8 mb-5" style={{ 
+                            padding: "0",
+                            margin: "0 auto"
+                            }} >
                                 <div className="card-header">
                                     <img
                                         className="mb-1 mr-2"

@@ -131,31 +131,35 @@ class Chat extends Component {
     renderChat = (chat, i) => {
         if (chat.sender._id === isAuthenticated().user._id) {
             return <li key={i} className="chat-right">
-                <div className="chat-hour">
-                    { DisplayTime12Hour(new Date(chat.time)) }
-                    {/* <br /> */}
-                    {/* {new Date(chat.time).getDate()} / {new Date(chat.time).getMonth()+1} / {new Date(chat.time).getFullYear()} */}
-                    <span className="fa fa-check-circle ml-1"></span>
-                </div>
-                <div className="chat-text">
-                    {chat.message}
+                <div className="media ml-auto mb-3">
+                    <div className="media-body">
+                        <div className="chat-text bg-primary rounded py-2 px-3 mb-2">
+                            <p className="text-small mb-0 text-white text-right">{chat.message}</p>
+                        </div>
+
+                        <div className="chat-hour small text-muted text-right">
+                            {new Date(chat.time).getDate()}/{new Date(chat.time).getMonth()+1}/{new Date(chat.time).getFullYear()}
+                            &nbsp;-&nbsp;{ DisplayTime12Hour(new Date(chat.time)) }
+                            
+                        </div>
+                    </div>
                 </div>
             </li>
+
         } else {
             return <li key={i} className="chat-left">
-                <div className="chat-avatar">
-
-                    <div className="chat-name">{chat.sender.name}</div>
+                <div className="media mb-3">
+                    <div className="media-body">
+                        <div className="chat-text bg-light rounded py-2 px-3 mb-2">
+                            <p className="text-small mb-0 text-left">{chat.message}</p>
+                        </div>
+                        <div className="chat-hour small text-muted text-left">
+                            {new Date(chat.time).getDate()}/{new Date(chat.time).getMonth()+1}/{new Date(chat.time).getFullYear()}
+                            &nbsp;-&nbsp;{ DisplayTime12Hour(new Date(chat.time)) }        
+                        </div>
+                    </div>
                 </div>
-                <div className="chat-text">
-                    {chat.message}
-                </div>
-                <div className="chat-hour">
-                    { DisplayTime12Hour(new Date(chat.time)) }
-                    {/* <br /> */}
-                    {/* {new Date(chat.time).getDate()} / {new Date(chat.time).getMonth()+1} / {new Date(chat.time).getFullYear()} */}
-                    <span className="fa fa-check-circle ml-1"></span>
-                </div>
+                    
             </li>
         }
     }
@@ -221,7 +225,12 @@ class Chat extends Component {
                                         }}
                                     >
                                         <div className="selected-user">
-                                            <span>To: <span className="name">{reciever.name}</span></span>
+                                        <img 
+                                            src={`${process.env.REACT_APP_API_URL}/user/photo/${reciever._id}`}
+                                            width="32"
+                                            height="32"
+                                        />
+                                        <span className="name">{reciever.name}</span>
                                         </div>
                                         <ScrollToBottom className="chat-container">
                                             <div>
@@ -234,34 +243,34 @@ class Chat extends Component {
                                             </div>
                                         </ScrollToBottom>
                                         <div className="form-group mt-3 mb-3 mr-3 ml-3">
-                                            <form onSubmit={this.sendMessage}>
-                                                <div className="form-group mt-5">
-                                                    <div className="input-group">
-                                                        <input
-                                                            type="text"
-                                                            className="form-control"
-                                                            placeholder="Your message..."
-                                                            value={this.state.message}
-                                                            name="message"
-                                                            onChange={e =>
-                                                                this.setState({
-                                                                    message: e.target.value,
-                                                                })
-                                                            }
-                                                        />
-                                                        <button type="button" onClick={() => this.setState({ showPicker: !showPicker })} className="btn btn-sm btn-primary">
+                                        <form onSubmit={this.sendMessage} className="bg-light">
+                                            <div class="input-group">
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    placeholder="Your message..."
+                                                    value={this.state.message}
+                                                    name="message"
+                                                    autoComplete="off"
+                                                    onChange={e =>
+                                                        this.setState({
+                                                            message: e.target.value,
+                                                        })
+                                                    }
+                                                />
+                                                <div class="input-group-append">
+                                                    {/* <button type="button" onClick={() => this.setState({ showPicker: !showPicker })} className="btn btn-sm btn-primary">
                                                             <i style={{fontSize: "20px"}} className="far fa-smile"></i>
-                                                        </button>
-                                                    </div>
+                                                        </button> */}
+                                                    <button
+                                                        type="submit"
+                                                        className="btn btn-link"
+                                                    >
+                                                    <i className="fa fa-paper-plane"></i>
+                                                    </button>
                                                 </div>
-                                                <button
-                                                    type="submit"
-                                                    className="btn btn-raised btn-primary pull-right"
-                                                >
-                                                    Send
-                                                </button>
-                                            </form>
-                                            {showPicker ? <Picker onEmojiClick={this.onEmojiClick} /> : ""}
+                                            </div>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>

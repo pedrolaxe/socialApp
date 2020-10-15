@@ -1,14 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import MainRouter from './MainRouter';
-//import ScrollToTop from './ScrollToTop';
+import Footer from './core/Footer';
 
 const App = () => (
   <BrowserRouter>
   <MainRouter />
-    {/* <ScrollToTop>
-      
-    </ScrollToTop> */}
+   
+    <Footer />
   </BrowserRouter>
 );
 
