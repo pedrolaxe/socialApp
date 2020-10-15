@@ -73,7 +73,7 @@ const Menu = (props) => (
                     </li>
                     
                     <div className="dropdown">
-                        <button style={{color: "#fff"}} className="btn dropdown-toggle pull-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button style={{color: "#fff"}} className="btn dropdown-toggle dropdown-menu-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i className="fas fa-user-cog fa-lg"></i> Configurações
                         {/* {`${isAuthenticated().user.name}'s profile`} */}
                         </button>
@@ -88,7 +88,7 @@ const Menu = (props) => (
                                 className="dropdown-item"
                                 to={`/chats/${isAuthenticated().user._id}`}
                             >
-                                <i className="fas fa-comment-alt mr-1"></i>Chats
+                                <i className="fas fa-comment-alt mr-1"></i>Messages
                             </Link>
                             <span
                                 className="dropdown-item"

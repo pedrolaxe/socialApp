@@ -1,7 +1,8 @@
 import React from 'react';
-
+import { Redirect } from 'react-router-dom';
 import Posts from '../post/Posts';
 import { isAuthenticated } from "../auth";
+
 
 const Home = () => (
     <>
@@ -13,7 +14,7 @@ const Home = () => (
             )}
             {!isAuthenticated() && (
                 <>
-                   voce não esta logado
+                   <Redirect to="/signin" />
                 </>
             )}
             

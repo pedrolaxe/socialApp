@@ -79,8 +79,8 @@ class FindPeople extends Component {
                         </Link>
                         <button style={{ 
                                         background: "#56ccf2", 
-                                        background: "-webkit-linear-gradient(to left, #56ccf2, #2f80ed)",
-                                        background: "linear-gradient(to left, #56ccf2, #2f80ed)",
+                                        //background: "-webkit-linear-gradient(to left, #56ccf2, #2f80ed)",
+                                        //background: "linear-gradient(to left, #56ccf2, #2f80ed)",
                                         padding: "10px"
                                     }} onClick={() => this.clickFollow(user, i)} className="btn btn-raised btn-success pull-right">
                             Follow

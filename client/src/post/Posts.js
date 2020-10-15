@@ -103,8 +103,8 @@ class Posts extends Component {
                                     <Link
                                         style={{
                                             background: "#56ccf2",
-                                            background: "-webkit-linear-gradient(to left, #56ccf2, #2f80ed)",
-                                            background: "linear-gradient(to left, #56ccf2, #2f80ed)",
+                                            //background: "-webkit-linear-gradient(to left, #56ccf2, #2f80ed)",
+                                            //background: "linear-gradient(to left, #56ccf2, #2f80ed)",
                                             borderRadius: "20px",
                                             padding: "10px"
                                         }}
