@@ -29,11 +29,7 @@ const Menu = (props) => (
         </button>
         <div className="collapse navbar-collapse " id="navbarSupportedContent" >
         <ul className="navbar-nav ml-auto">
-            <li className="nav-item ">
-                <Link className="nav-link" style={isActive(props.history, "/")} to='/' >
-                <i className="fas fa-house-user fa-lg"></i>
-                </Link>
-            </li>
+            
             {!isAuthenticated() && (
                 <>
                     <li className="nav-item">
@@ -41,17 +37,22 @@ const Menu = (props) => (
                         <i className="fas fa-sign-in-alt mr-1"></i>Sign In
                         </Link>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link className="nav-link" style={isActive(props.history, "/signup")} to='/signup' >
                             <i className="fas fa-user-plus mr-1"></i>Sign Up
                         </Link>
-                    </li>
+                    </li> */}
 
                     
                 </>
             )}
             {isAuthenticated() && (
                 <>
+                <li className="nav-item ">
+                    <Link className="nav-link" style={isActive(props.history, "/")} to='/' >
+                    <i className="fas fa-house-user fa-lg"></i>
+                    </Link>
+                </li>
                     <li className="nav-item">
                         <Link
                             className="nav-link"

@@ -107,11 +107,15 @@ class Signin extends Component {
                                 ""
                             )}
                         <p>
-                            
                         </p>
+                         <p>
+                         Don't have an account? <Link to='/signup'>Sign Up</Link>
+                         </p>
+                        
                         <div className="alert alert-danger" style={{ display: error ? "" : "none" }}>
                             {error}
                         </div>
+
                     </div>
                 </div>
             </div>
