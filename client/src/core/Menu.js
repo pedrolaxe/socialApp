@@ -36,7 +36,7 @@ const Menu = (props) => (
             </li>
             {!isAuthenticated() && (
                 <>
-                    {/* <li className="nav-item">
+                    <li className="nav-item">
                         <Link className="nav-link" style={isActive(props.history, "/signin")} to='/signin' >
                         <i className="fas fa-sign-in-alt mr-1"></i>Sign In
                         </Link>
@@ -45,7 +45,7 @@ const Menu = (props) => (
                         <Link className="nav-link" style={isActive(props.history, "/signup")} to='/signup' >
                             <i className="fas fa-user-plus mr-1"></i>Sign Up
                         </Link>
-                    </li> */}
+                    </li>
 
                     
                 </>
