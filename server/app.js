@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 8080;
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log('db connected'));
+.then(() => console.log('mongoDB Connected'));
 
 mongoose.connection.on('error', err => {
     console.log(`DB Error: ${err.message}`);
