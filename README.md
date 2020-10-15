@@ -20,7 +20,7 @@ A Social Network
 
 ## To run the project locally
 
-* clone this Repository by `git clone https://github.com/shahshubh/socialApp-MERN.git`.
+* clone this Repository by `git clone https://github.com/pedrolaxe/socialApp.git`.
 * Inside /server directory create a .env file and add these
     - `MONGO_URI=mongodb://localhost:27017/socialapp`
     - `PORT=8080`
