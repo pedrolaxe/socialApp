@@ -20,13 +20,11 @@ const PORT = process.env.PORT || 8080;
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log('mongoDB Connected'));
+.then(() => console.log('Connected to MongoDB'));
 
 mongoose.connection.on('error', err => {
     console.log(`DB Error: ${err.message}`);
 });
-
-
 
 
 const postRoutes = require('./routes/post');
@@ -34,14 +32,11 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const chatRoutes = require('./routes/chat');
 
-
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
 app.use(cors());
-
-
 
 
 const Socket = require('./models/socket');
@@ -142,9 +137,7 @@ app.use('/', authRoutes);
 app.use('/', userRoutes);
 app.use('/', chatRoutes);
 
-
 app.use('/static', express.static('public'));
-
 
 app.use(function(err,req,res,next){
     if(err.name === 'UnauthorizedError'){
@@ -152,8 +145,6 @@ app.use(function(err,req,res,next){
     }
 });
 
-
-
 server.listen(PORT, () => {
-    console.log(`Server started at port ${PORT}`)
+    console.log(`API-Server started at port ${PORT}`)
 })

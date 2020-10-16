@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { signup } from "../auth";
 import { Link } from 'react-router-dom';
 import Loading from '../loading/Loading';
-import SocialLogin from "./SocialLogin";
 import '../css/Signin.css';
 
 class Signup extends Component {
@@ -107,7 +106,9 @@ class Signup extends Component {
         return (
             <div className="container">
                 <div className="row mb-3">
-                    <div className="col-8 col-lg-8">IMAGE HERE</div>
+                    <div className="col-8 col-lg-8">
+                            <img src="https://i.imgur.com/926vnAO.jpg" className="img-fluid rounded" />
+                    </div>
                     <div className="col-4 col-lg-4">
                         <h2 className="mt-5 mb-5">Sign Up</h2>
                         
