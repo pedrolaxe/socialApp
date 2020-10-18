@@ -38,13 +38,13 @@ A Social Network
 
 ## Tech Stack of this Project
 
-* Frontend: Reactjs, Bootstrap Material
+* Frontend: Reactjs, Bootstrap 4
 * Database: MongoDB
 
 
-## Further Work
+## TO-DO
 
-- [ ] Improve performancem - decrease loading time.
+- [ ] Improve performance - decrease loading time.
 - [ ] Display status of users online/offline in chat.
 - [ ] Add Notifications when someone follows/messages you or likes/comments on your post. 
 
