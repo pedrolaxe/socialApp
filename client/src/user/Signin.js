@@ -95,10 +95,10 @@ class Signin extends Component {
         
             <div className="container">
                 <div className="row mb-3">
-                    <div className="col-8 col-lg-8">
+                    <div className="col-md-8">
                         <img src="https://i.imgur.com/926vnAO.jpg" className="img-fluid rounded" />
                     </div>
-                    <div className="col-4 col-lg-4">
+                    <div className="col-md-4">
                         <h2 className="mt-4 mb-4">Sign In</h2>
                         
                         {this.signinForm(email, password, loading)}

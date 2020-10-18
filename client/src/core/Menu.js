@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-
 import { signout, isAuthenticated } from "../auth";
 
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
-        return { borderBottom: "4px solid #ff9900", color: "white" }
+        return { borderBottom: "2px solid #ff9900", color: "white" }
     } else {
         return { color: "#ffffff" }
     }
