@@ -46,6 +46,7 @@ const Menu = (props) => (
                 </>
             )}
             {isAuthenticated() && (
+                
                 <>
                 <li className="nav-item ">
                     <Link className="nav-link" style={isActive(props.history, "/")} to='/' >
@@ -73,9 +74,17 @@ const Menu = (props) => (
                     </li>
                     
                     <div className="dropdown">
-                        <button style={{color: "#fff"}} className="btn dropdown-toggle dropdown-menu-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i className="fas fa-user-cog fa-lg"></i> Configurações
-                        {/* {`${isAuthenticated().user.name}'s profile`} */}
+                    
+                    
+                        <button style={{color: "#fff"}} className="btn dropdown-toggle dropdown-menu-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {/* <i className="fas fa-user-cog fa-lg"></i> */}
+                        {/* {isAuthenticated().user.name} */}
+                        <img 
+                            src={`${process.env.REACT_APP_API_URL}/user/photo/${isAuthenticated().user._id}`}
+                            width="32"
+                            height="32"
+                            className="rounded"
+                        />
                         </button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <Link 

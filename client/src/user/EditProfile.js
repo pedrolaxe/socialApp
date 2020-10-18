@@ -15,6 +15,7 @@ class EditProfle extends Component {
         this.state = {
             id: "",
             name: "",
+            username: "",
             email: "",
             about: "",
             password: "",
@@ -35,6 +36,7 @@ class EditProfle extends Component {
                     this.setState({ 
                         id: data._id,
                         name: data.name,
+                        username: data.username,
                         email: data.email,
                         error: "" ,
                         about: data.about
@@ -50,7 +52,7 @@ class EditProfle extends Component {
     }
 
     isValid = () => {
-        const { name, email, password, fileSize } = this.state;
+        const { name, username, email, password, fileSize } = this.state;
         const userId = this.props.match.params.userId;
         if(userId !== isAuthenticated().user._id){
             this.setState({ error: "You are not authorized to do this !!", loading: false });
@@ -64,6 +66,10 @@ class EditProfle extends Component {
 
         if (name.length === 0) {
             this.setState({ error: "Name is required", loading: false });
+            return false;
+        }
+        if (username.length === 0) {
+            this.setState({ error: "Username is required", loading: false });
             return false;
         }
         //test regular expression with 'test' keyword
@@ -114,7 +120,7 @@ class EditProfle extends Component {
 
     };
 
-    signupForm = (name, email, password, loading, about) => (
+    signupForm = (name, username, email, password, loading, about) => (
         <form>
             <div className="form-group">
                 <label className="text-muted">Profile Photo</label>
@@ -134,6 +140,16 @@ class EditProfle extends Component {
                     type="text"
                     className="form-control"
                     value={name}
+                />
+            </div>
+            <div className="form-group">
+                <label className="text-muted">Username</label>
+                <input
+                    onChange={this.handleChange}
+                    name="username"
+                    type="text"
+                    className="form-control"
+                    value={username}
                 />
             </div>
             <div className="form-group">
@@ -173,7 +189,7 @@ class EditProfle extends Component {
 
     render() {
 
-        const { id, name, email, password, loading, redirectToProfile, error, about } = this.state;
+        const { id, name, username, email, password, loading, redirectToProfile, error, about } = this.state;
         if (redirectToProfile) {
             return <Redirect to={`/user/${isAuthenticated().user._id}`}></Redirect>
         }
@@ -195,7 +211,7 @@ class EditProfle extends Component {
                 {loading ? (
                     <Loading />
                 ) : (
-                    this.signupForm(name, email, password, loading, about)
+                    this.signupForm(name, username, email, password, loading, about)
                 )}
             </div>
         );
