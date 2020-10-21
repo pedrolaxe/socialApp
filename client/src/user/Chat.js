@@ -220,19 +220,19 @@ class Chat extends Component {
                                         <div className="selected-user">
                                             
                                             
-                                            <div class="row">
-                                                <div class="col-6 col-md-4">
+                                            <div className="row">
+                                                <div className="col-6 col-md-4">
                                                 <img 
                                                     src={`${process.env.REACT_APP_API_URL}/user/photo/${reciever._id}`}
                                                     width="48"
                                                     height="48"
                                                     style={{
-                                                        "border-radius": "50%",
+                                                        borderRadius: "50%",
                                                     }}
                                                 />
                                                 <span className="name ml-3">{reciever.name}</span>
                                                 </div>
-                                                <div class="col-md-8"></div>
+                                                <div className="col-md-8"></div>
                                             </div>
                                         </div>
                                         <ScrollToBottom className="chat-container">
@@ -247,7 +247,7 @@ class Chat extends Component {
                                         </ScrollToBottom>
                                         <div className="form-group">
                                         <form onSubmit={this.sendMessage} className="bg-light">
-                                            <div class="input-group">
+                                            <div className="input-group">
                                                 <input
                                                     type="text"
                                                     className="form-control"
@@ -261,7 +261,7 @@ class Chat extends Component {
                                                         })
                                                     }
                                                 />
-                                                <div class="input-group-append">
+                                                <div className="input-group-append">
                                                     {/* <button type="button" onClick={() => this.setState({ showPicker: !showPicker })} className="btn btn-sm btn-primary">
                                                             <i style={{fontSize: "20px"}} className="far fa-smile"></i>
                                                         </button> */}

@@ -3,7 +3,6 @@ import { comment, uncomment } from './apiPost';
 import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
 import DefaultProfile from '../images/avatar.jpg';
-import Picker from 'emoji-picker-react';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import {timeDifference} from './timeDifference';
@@ -147,7 +146,6 @@ class Comment extends Component {
                             </div>
                             <button type="submit" className="btn btn-raised btn-sm btn-info pull-right mt-3 mb-3">Add comment</button>                
                         </form>
-                        {showPicker ? <Picker onEmojiClick={this.onEmojiClick} /> : ""}
                         <div className="alert alert-danger mt-5" style={{ display: error ? "" : "none" }}>
                             {error}
                         </div>

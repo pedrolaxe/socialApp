@@ -7,20 +7,17 @@
     "bugs": {
       "url": "https://github.com/pedrolaxe/socialApp/issues"
     },
-  "homepage": "https://github.com/pedrolaxe/socialApp",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "emoji-picker-react": "^3.1.6",
     "react": "^16.13.1",
     "react-bootstrap-tabs": "^1.0.2",
     "react-confirm-alert": "^2.6.1",
     "react-dom": "^16.13.1",
-    "react-google-login": "^5.1.12",
     "react-infinite-scroll-component": "^5.0.4",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.4.4",
     "react-scroll-to-bottom": "^2.0.0",
     "socket.io-client": "^2.3.0"
   },
