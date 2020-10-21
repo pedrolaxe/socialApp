@@ -2,8 +2,6 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Posts from '../post/Posts';
 import { isAuthenticated } from "../auth";
-import Footer from './Footer';
-
 
 const Home = () => (
     <>

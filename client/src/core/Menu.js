@@ -83,15 +83,17 @@ const Menu = (props) => (
                             src={`${process.env.REACT_APP_API_URL}/user/photo/${isAuthenticated().user._id}`}
                             width="32"
                             height="32"
-                            className="rounded"
+                            style={{
+                                borderRadius: "50%",
+                            }}
                         />
                         </button>
-                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div className="dropdown-menu" style={{marginLeft: "-75px"}} aria-labelledby="dropdownMenuButton">
                             <Link 
                                 className="dropdown-item" 
                                 to={`/user/${isAuthenticated().user._id}`}
                             >
-                                <i className="fas fa-user mr-1"></i>Your Profile
+                                <i className="fas fa-user mr-1"></i>My Profile
                             </Link>
                             <Link
                                 className="dropdown-item"
@@ -99,6 +101,7 @@ const Menu = (props) => (
                             >
                                 <i className="fas fa-comment-alt mr-1"></i>Messages
                             </Link>
+                            <div className="dropdown-divider"></div>
                             <span
                                 className="dropdown-item"
                                 style={{ cursor: "pointer" }}

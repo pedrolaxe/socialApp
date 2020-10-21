@@ -1,13 +1,12 @@
  
  # socialApp
 
-A Social Network
+SocialApp is a MERN social networking
 
 ## Features
 
 * SignUp / SignIn.
 * Forgot password.
-* Google Oauth Login.
 * edit / delete your profile.
 * Follow / Unfollow users.
 * create / edit / delete posts.

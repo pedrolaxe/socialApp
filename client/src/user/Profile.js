@@ -109,6 +109,7 @@ class Profile extends Component {
 
     renderProfile = () => {
         const { user, following, posts } = this.state;
+        //console.log("USer: ", user)
         const photoUrl = user._id ? `${process.env.REACT_APP_API_URL}/user/photo/${user._id}?${new Date().getTime()}` : DefaultProfile;
         let followingBadge = <p style={{ marginBottom: "0" }}><span className="badge badge-pill badge-primary">{user.following.length}</span> Following</p>
         let followersBadge = <p style={{ marginBottom: "0" }}><span className="badge badge-pill badge-success">{user.followers.length}</span> Followers</p>
@@ -174,6 +175,7 @@ class Profile extends Component {
                         <div className="section">
                             <h3>About Me</h3>
                             <p>{user.about}</p>
+                            <p>Username: {user.username}</p>
                         </div>
                         <div className="section">
                             <h3>Statistics</h3>
@@ -211,6 +213,7 @@ class Profile extends Component {
                             </Tab>
                             <Tab label={followersBadge}  className="tab-title-name">
                                 {user.followers.map((person, i) => (
+                                
                                     <div key={i} className="media user-follower">
                                         <img 
                                             src={`${process.env.REACT_APP_API_URL}/user/photo/${person._id}`}
@@ -220,8 +223,8 @@ class Profile extends Component {
                                         />
                                         <div className="media-body">
                                             <Link to={`/user/${person._id}`} >
-                                                {person.name}<br /><span className="text-muted username">@{person.name}</span>
-                                            </Link>
+                                                {person.name}
+                                                </Link><br /><span className="text-muted username">@{person.name}</span>
                                             {/* <button type="button" className="btn btn-sm btn-toggle-following pull-right"><i className="fa fa-checkmark-round"></i> <span>Following</span></button> */}
                                         </div>
                                     </div>
@@ -239,8 +242,9 @@ class Profile extends Component {
                                         />
                                         <div className="media-body">
                                             <Link to={`/user/${person._id}`} >
-                                                { person.name }<br /><span className="text-muted username">@{person.name}</span>
-                                            </Link>
+                                                { person.name }</Link>
+                                                <br /><span className="text-muted username">@{person.name}</span>
+                                            
                                             {/* <button data-index = {person._id} onClick={this.unfollowClick} type="button" className="btn btn-sm btn-toggle-following pull-right"><i className="fa fa-checkmark-round"></i> <span>Unfollow</span></button> */}
                                         </div>
                                     </div>

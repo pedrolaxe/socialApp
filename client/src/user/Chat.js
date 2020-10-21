@@ -5,12 +5,11 @@ import { read, getChats, getChatList } from './apiUser';
 import { isAuthenticated } from "../auth";
 import ScrollToBottom from 'react-scroll-to-bottom';
 
-import '../css/Chat.css'
 import DefaultProfile from '../images/avatar.jpg';
 
 import {DisplayTime12Hour} from '../post/timeDifference';
-import Picker from 'emoji-picker-react';
 import Loading from '../loading/Loading';
+import '../css/Chat.css'
 
 const socketUrl = `${process.env.REACT_APP_API_URL}`;
 let socket;
@@ -168,21 +167,15 @@ class Chat extends Component {
         const { chatList, messages, reciever, sender, showPicker, loading } = this.state;
         return (
             
-            <div className="container mb-5">
-                <div className="page-title">
-                    <div className="row gutters">
-                        <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <h5 className="title">Chats</h5>
-                        </div>
-                    </div>
-                </div>
+            <div className="container">
+                
                 { loading ? 
                     (<Loading />) 
                     : 
                     ("")
                 }
                 <div className="content-wrapper" style={{ display: loading ? "none" : "" }}>
-                    <div className="row gutters">
+                    <div className="row mb-5">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div className="card card-chat m-0">
                                 <div className="row no-gutters">
@@ -225,12 +218,22 @@ class Chat extends Component {
                                         }}
                                     >
                                         <div className="selected-user">
-                                        <img 
-                                            src={`${process.env.REACT_APP_API_URL}/user/photo/${reciever._id}`}
-                                            width="32"
-                                            height="32"
-                                        />
-                                        <span className="name">{reciever.name}</span>
+                                            
+                                            
+                                            <div class="row">
+                                                <div class="col-6 col-md-4">
+                                                <img 
+                                                    src={`${process.env.REACT_APP_API_URL}/user/photo/${reciever._id}`}
+                                                    width="48"
+                                                    height="48"
+                                                    style={{
+                                                        "border-radius": "50%",
+                                                    }}
+                                                />
+                                                <span className="name ml-3">{reciever.name}</span>
+                                                </div>
+                                                <div class="col-md-8"></div>
+                                            </div>
                                         </div>
                                         <ScrollToBottom className="chat-container">
                                             <div>
@@ -242,7 +245,7 @@ class Chat extends Component {
                                                 </ul>
                                             </div>
                                         </ScrollToBottom>
-                                        <div className="form-group mt-3 mb-3 mr-3 ml-3">
+                                        <div className="form-group">
                                         <form onSubmit={this.sendMessage} className="bg-light">
                                             <div class="input-group">
                                                 <input
@@ -264,7 +267,7 @@ class Chat extends Component {
                                                         </button> */}
                                                     <button
                                                         type="submit"
-                                                        className="btn btn-link"
+                                                        className="btn btn-link btn-xl"
                                                     >
                                                     <i className="fa fa-paper-plane"></i>
                                                     </button>
