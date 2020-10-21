@@ -57,6 +57,7 @@ class Posts extends Component {
                             <b>All posts rendered.. Please refresh to see new posts.</b>
                         </p>
                     }
+                    
                 >
                     { posts.map((post, i) => {
                         const posterId = post.postedBy ? post.postedBy._id : "";

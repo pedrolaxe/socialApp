@@ -4,7 +4,8 @@ import { signout, isAuthenticated } from "../auth";
 
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
-        return { borderBottom: "2px solid #ff9900", color: "white" }
+        return { //borderBottom: "2px solid #ff9900", color: "white" 
+                }
     } else {
         return { color: "#ffffff" }
     }
@@ -13,11 +14,8 @@ const isActive = (history, path) => {
 const Menu = (props) => (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top"  
         style={{ 
-            //background: "#007991", 
-            //paddingTop: "15px",
             paddingBottom: "0",
             marginBottom: "100px"
-
         }}
     >
         <a className="navbar-brand" style={{ color: "white", fontFamily: 'Courgette, cursive' }} href="/">
