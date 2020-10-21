@@ -6,8 +6,12 @@
   "scripts": {
     "start": "node app.js"
   },
-  "author": "shubh",
+  "author": "Pedro Laxe",
   "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/pedrolaxe/socialApp/issues"
+    },
+  "homepage": "https://github.com/pedrolaxe/socialApp",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",

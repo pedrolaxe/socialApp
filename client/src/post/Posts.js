@@ -44,8 +44,6 @@ class Posts extends Component {
         this.setState({ skip: this.state.posts.length })
     }
 
-
-
     renderPosts = (posts) => {
         return (
             <div className="row">

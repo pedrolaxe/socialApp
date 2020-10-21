@@ -142,15 +142,22 @@ class EditProfle extends Component {
                     value={name}
                 />
             </div>
+            
+        
             <div className="form-group">
-                <label className="text-muted">Username</label>
-                <input
-                    onChange={this.handleChange}
-                    name="username"
-                    type="text"
-                    className="form-control"
-                    value={username}
-                />
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">@</div>
+                    </div>
+                        <input
+                            onChange={this.handleChange}
+                            name="username"
+                            type="text"
+                            className="form-control"
+                            value={username}
+                            placeholder="Username"
+                        />
+                </div>
             </div>
             <div className="form-group">
                 <label className="text-muted">Email</label>

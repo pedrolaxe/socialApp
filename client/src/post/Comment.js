@@ -125,7 +125,7 @@ class Comment extends Component {
         const { comments } = this.props;
 
         return(
-            <diV>
+            <div>
                 { loading ? (
                     <Loading />
                 ) : (
@@ -143,9 +143,7 @@ class Comment extends Component {
                                     value={text}
                                     placeholder="Leave a comment..."
                                 />
-                                <div>
-                                    <button type="button" onClick={() => this.setState({ showPicker: !showPicker })} className="btn btn-sm btn-primary"><i style={{fontSize: "20px"}} className="far fa-smile"></i></button>
-                                </div>
+                                
                             </div>
                             <button type="submit" className="btn btn-raised btn-sm btn-info pull-right mt-3 mb-3">Add comment</button>                
                         </form>
@@ -198,7 +196,7 @@ class Comment extends Component {
                     </div>
                 </div>
                 )}
-        </diV>
+        </div>
         );
     }
 }
