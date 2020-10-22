@@ -52,7 +52,7 @@ exports.getAllPostsRn = (req,res) => {
 }
 
 exports.countPosts = (req,res) => {
-    Post.count()
+    Post.countDocuments()
     .then((data) => {
         res.json({data})
     })

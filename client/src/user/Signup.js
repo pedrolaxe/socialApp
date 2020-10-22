@@ -68,9 +68,9 @@ class Signup extends Component {
                     type="text" 
                     className="form-control" 
                     value={name}
-                    placeholder="Username"
+                    placeholder="Name"
                 />
-                 <label htmlFor="name">Username</label>
+                 <label htmlFor="name">Name</label>
             </div>
             <div className="form-label-group">
                 <input 
