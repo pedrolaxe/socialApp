@@ -121,7 +121,7 @@ io.on('connection', async (socket) => {
 
     socket.on('disconnect', () => {
         Socket.findOne({socketId: socket.id})
-        .remove((err, result) => {
+        .deleteOne((err, result) => {
             if(err){
                 console.log(err)
             } else {

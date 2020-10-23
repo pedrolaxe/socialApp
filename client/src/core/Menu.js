@@ -48,7 +48,7 @@ const Menu = (props) => (
                 <>
                 <li className="nav-item ">
                     <Link className="nav-link" style={isActive(props.history, "/")} to='/' >
-                    <i className="fas fa-house-user fa-lg"></i>
+                    {/* <i className="fas fa-house-user fa-lg"></i> */} Home
                     </Link>
                 </li>
                     <li className="nav-item">
@@ -57,7 +57,7 @@ const Menu = (props) => (
                             to={'/findpeople'}
                             style={isActive(props.history, '/findpeople')}
                         >
-                            <i className="fas fa-users fa-lg"></i>
+                            Find{/* <i className="fas fa-users fa-lg"></i> */}
                         </Link>
                     </li> 
 
@@ -67,7 +67,7 @@ const Menu = (props) => (
                             to={'/post/create'}
                             style={isActive(props.history, '/post/create')}
                         >
-                            <i className="fas fa-plus fa-lg"></i>
+                            {/* <i className="fas fa-plus fa-lg"></i> */} New Post
                         </Link>
                     </li>
                     
@@ -85,7 +85,7 @@ const Menu = (props) => (
                             }}
                         />
                         </button>
-                        <div className="dropdown-menu" style={{marginLeft: "-75px"}} aria-labelledby="dropdownMenuButton">
+                        <div className="dropdown-menu menudrop" aria-labelledby="dropdownMenuButton">
                             <Link 
                                 className="dropdown-item" 
                                 to={`/user/${isAuthenticated().user._id}`}

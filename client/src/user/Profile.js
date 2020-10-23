@@ -209,17 +209,17 @@ class Profile extends Component {
                                 <p>{user.username}</p>
                             </div>
                             <div className="mt-3">
-                                <label className="tx-11 font-weight-bold mb-0">Followers:</label>
-                                <p>{user.followers.length}</p>
+                                <label className="tx-11 font-weight-bold mb-0">Followers:</label>&nbsp;&nbsp;
+                                <span className="badge badge-pill badge-primary">{user.followers.length}</span>
                             </div>
                             <div className="mt-3">
-                                <label className="tx-11 font-weight-bold mb-0">Following:</label>
-                                <p>{user.following.length}</p>
-                            </div>
-                            <div className="mt-3">
-                                <label className="tx-11 font-weight-bold mb-0">Posts:</label>
-                                <p>{posts.length}</p>
-                            </div>
+                                <label className="tx-11 font-weight-bold mb-0">Following:</label>&nbsp;&nbsp;
+                                <span className="badge badge-pill badge-primary">{user.following.length}</span>
+                             </div>
+                            {/* <div className="mt-3">
+                                <label className="tx-11 font-weight-bold mb-0">Posts:</label>&nbsp;&nbsp;
+                                <span className="badge badge-pill badge-primary">{posts.length}</span>
+                            </div> */}
                            
                         </div>
                     </div>
