@@ -7,7 +7,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 import DefaultProfile from '../images/avatar.jpg';
 
-import {DisplayTime12Hour} from '../post/timeDifference';
+import { DisplayTime12Hour } from '../post/timeDifference';
 import Loading from '../loading/Loading';
 import '../css/Chat.css'
 
@@ -31,7 +31,7 @@ class Chat extends Component {
             showPicker: false
         };
     }
-    
+
 
     init = async (userId) => {
         const token = isAuthenticated().token;
@@ -49,10 +49,10 @@ class Chat extends Component {
         const recieverId = this.props.match.params.user2Id;
         const data = await getChats(senderId, recieverId)
         const chatList = await getChatList(senderId)
-        
+
         if (data.error) {
             console.log(data.error)
-        } else if(chatList.error){
+        } else if (chatList.error) {
             console.log(chatList.error)
         } else {
             this.setState({ messages: data, loading: false, chatList: chatList })
@@ -79,12 +79,12 @@ class Chat extends Component {
 
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.scrollToBottom()
     }
 
     scrollToBottom = () => {
-        this.messagesEndRef.current.scrollIntoView({behaviour: 'smooth'})
+        this.messagesEndRef.current.scrollIntoView({ behaviour: 'smooth' })
     }
 
     initSocket = () => {
@@ -137,9 +137,9 @@ class Chat extends Component {
                         </div>
 
                         <div className="chat-hour small text-muted text-right">
-                            {new Date(chat.time).getDate()}/{new Date(chat.time).getMonth()+1}/{new Date(chat.time).getFullYear()}
-                            &nbsp;-&nbsp;{ DisplayTime12Hour(new Date(chat.time)) }
-                            
+                            {new Date(chat.time).getDate()}/{new Date(chat.time).getMonth() + 1}/{new Date(chat.time).getFullYear()}
+                            &nbsp;-&nbsp;{DisplayTime12Hour(new Date(chat.time))}
+
                         </div>
                     </div>
                 </div>
@@ -153,12 +153,12 @@ class Chat extends Component {
                             <p className="text-small mb-0 text-left">{chat.message}</p>
                         </div>
                         <div className="chat-hour small text-muted text-left">
-                            {new Date(chat.time).getDate()}/{new Date(chat.time).getMonth()+1}/{new Date(chat.time).getFullYear()}
-                            &nbsp;-&nbsp;{ DisplayTime12Hour(new Date(chat.time)) }        
+                            {new Date(chat.time).getDate()}/{new Date(chat.time).getMonth() + 1}/{new Date(chat.time).getFullYear()}
+                            &nbsp;-&nbsp;{DisplayTime12Hour(new Date(chat.time))}
                         </div>
                     </div>
                 </div>
-                    
+
             </li>
         }
     }
@@ -166,12 +166,12 @@ class Chat extends Component {
     render() {
         const { chatList, messages, reciever, sender, showPicker, loading } = this.state;
         return (
-            
+
             <div className="container">
-                
-                { loading ? 
-                    (<Loading />) 
-                    : 
+
+                { loading ?
+                    (<Loading />)
+                    :
                     ("")
                 }
                 <div className="content-wrapper" style={{ display: loading ? "none" : "" }}>
@@ -192,18 +192,18 @@ class Chat extends Component {
                                                 </div>
                                             </div> */}
                                             <ul className="users" style={{ display: loading ? "none" : "" }} >
-                                                { chatList.map((user, i) => (
+                                                {chatList.map((user, i) => (
                                                     <a key={i} href={`/chat/${sender._id}/${user._id}`}>
                                                         <li className="person" data-chat="person1">
                                                             <div className="user">
-                                                                <img 
-                                                                    src={`${process.env.REACT_APP_API_URL}/user/photo/${user._id}`} 
+                                                                <img
+                                                                    src={`${process.env.REACT_APP_API_URL}/user/photo/${user._id}`}
                                                                     alt={user.name}
-                                                                    onError={i => (i.target.src = DefaultProfile)} 
+                                                                    onError={i => (i.target.src = DefaultProfile)}
                                                                 />
                                                             </div>
                                                             <p className="name-time">
-                                                                <span className="name">{ user.name }</span>
+                                                                <span className="name">{user.name}</span>
                                                             </p>
                                                         </li>
                                                     </a>
@@ -211,26 +211,26 @@ class Chat extends Component {
                                             </ul>
                                         </div>
                                     </div>
-                                    <div className="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9" 
+                                    <div className="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9"
                                         style={{
                                             borderRight: "1px solid black",
                                             borderBottom: "1px solid black"
                                         }}
                                     >
                                         <div className="selected-user">
-                                            
-                                            
+
+
                                             <div className="row">
                                                 <div className="col-6 col-md-4">
-                                                <img 
-                                                    src={`${process.env.REACT_APP_API_URL}/user/photo/${reciever._id}`}
-                                                    width="48"
-                                                    height="48"
-                                                    style={{
-                                                        borderRadius: "50%",
-                                                    }}
-                                                />
-                                                <span className="name ml-3">{reciever.name}</span>
+                                                    <img
+                                                        src={`${process.env.REACT_APP_API_URL}/user/photo/${reciever._id}`}
+                                                        width="48"
+                                                        height="48"
+                                                        style={{
+                                                            borderRadius: "50%",
+                                                        }}
+                                                    />
+                                                    <span className="name ml-3">{reciever.name}</span>
                                                 </div>
                                                 <div className="col-md-8"></div>
                                             </div>
@@ -246,34 +246,34 @@ class Chat extends Component {
                                             </div>
                                         </ScrollToBottom>
                                         <div className="form-group">
-                                        <form onSubmit={this.sendMessage} className="bg-light">
-                                            <div className="input-group">
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder="Your message..."
-                                                    value={this.state.message}
-                                                    name="message"
-                                                    autoComplete="off"
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            message: e.target.value,
-                                                        })
-                                                    }
-                                                />
-                                                <div className="input-group-append">
-                                                    {/* <button type="button" onClick={() => this.setState({ showPicker: !showPicker })} className="btn btn-sm btn-primary">
+                                            <form onSubmit={this.sendMessage} className="bg-light">
+                                                <div className="input-group">
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+                                                        placeholder="Your message..."
+                                                        value={this.state.message}
+                                                        name="message"
+                                                        autoComplete="off"
+                                                        onChange={e =>
+                                                            this.setState({
+                                                                message: e.target.value,
+                                                            })
+                                                        }
+                                                    />
+                                                    <div className="input-group-append">
+                                                        {/* <button type="button" onClick={() => this.setState({ showPicker: !showPicker })} className="btn btn-sm btn-primary">
                                                             <i style={{fontSize: "20px"}} className="far fa-smile"></i>
                                                         </button> */}
-                                                    <button
-                                                        type="submit"
-                                                        className="btn btn-link btn-xl"
-                                                    >
-                                                    <i className="fa fa-paper-plane"></i>
-                                                    </button>
+                                                        <button
+                                                            type="submit"
+                                                            className="btn btn-link btn-xl"
+                                                        >
+                                                            <i className="fa fa-paper-plane"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

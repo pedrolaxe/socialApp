@@ -38,42 +38,42 @@ class ResetPassword extends Component {
                         <img src="https://i.imgur.com/926vnAO.jpg" className="img-fluid rounded" />
                     </div>
                     <div className="col-md-4">
-                    <h2 className="mt-5 mb-5">Reset your Password</h2>
+                        <h2 className="mt-5 mb-5">Reset your Password</h2>
 
-                    <div className="alert alert-danger" style={{ display: error ? "" : "none" }}>
-                        {error}
-                    </div>
-                    <div className="alert alert-danger" style={{ display: message ? "" : "none" }}>
-                        {message}
-                    </div>
-                    <form>
-                        <div className="form-group mt-5">
-                            <input
-                                type="password"
-                                className="form-control"
-                                placeholder="Your new password"
-                                value={this.state.newPassword}
-                                name="newPassword"
-                                onChange={e =>
-                                    this.setState({
-                                        newPassword: e.target.value,
-                                        message: "",
-                                        error: ""
-                                    })
-                                }
-                                autoFocus
-                            />
+                        <div className="alert alert-danger" style={{ display: error ? "" : "none" }}>
+                            {error}
                         </div>
-                        <button
-                            onClick={this.resetPassword}
-                            className="btn btn-raised btn-primary"
-                        >
-                            Reset Password
+                        <div className="alert alert-danger" style={{ display: message ? "" : "none" }}>
+                            {message}
+                        </div>
+                        <form>
+                            <div className="form-group mt-5">
+                                <input
+                                    type="password"
+                                    className="form-control"
+                                    placeholder="Your new password"
+                                    value={this.state.newPassword}
+                                    name="newPassword"
+                                    onChange={e =>
+                                        this.setState({
+                                            newPassword: e.target.value,
+                                            message: "",
+                                            error: ""
+                                        })
+                                    }
+                                    autoFocus
+                                />
+                            </div>
+                            <button
+                                onClick={this.resetPassword}
+                                className="btn btn-raised btn-primary"
+                            >
+                                Reset Password
                         </button>
-                    </form>
+                        </form>
                     </div>
-                   
-            </div>
+
+                </div>
             </div>
         );
     }

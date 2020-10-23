@@ -35,6 +35,9 @@ SocialApp is a MERN social networking
     - `npm start`
 * Open your browser and enter url `http://localhost:3000`
 
+To begin the development, run `npm start` or `yarn start`.
+To create a production bundle, use `npm run build` or `yarn build`.
+
 ## Tech Stack of this Project
 
 * Frontend: Reactjs, Bootstrap 4

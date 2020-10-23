@@ -72,8 +72,7 @@ const Menu = (props) => (
                     </li>
                     
                     <div className="dropdown">
-                    
-                    
+
                         <button style={{color: "#fff"}} className="btn dropdown-toggle dropdown-menu-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {/* <i className="fas fa-user-cog fa-lg"></i> */}
                         {/* {isAuthenticated().user.name} */}

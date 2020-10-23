@@ -30,25 +30,25 @@ class Signin extends Component {
         const { email, password } = this.state;
         const user = { email, password };
         //console.log(user.email.length);
-        if(user.email && user.password){
+        if (user.email && user.password) {
             signin(user)
-            .then(data => {
-                if (data.error) {
-                    this.setState({ error: data.error, loading: false });
-                } else {
-                    // authenticate
-                    authenticate(data, () => {
-                        this.setState({ redirectToReferer: true })
-                    });
-                }
-            });
-        }  else {
+                .then(data => {
+                    if (data.error) {
+                        this.setState({ error: data.error, loading: false });
+                    } else {
+                        // authenticate
+                        authenticate(data, () => {
+                            this.setState({ redirectToReferer: true })
+                        });
+                    }
+                });
+        } else {
             this.setState({
                 loading: false,
                 error: "Please double-check your email and password."
             });
         }
-        
+
     };
 
     signinForm = (email, password, loading) => (
@@ -64,7 +64,7 @@ class Signin extends Component {
                 />
                 <label htmlFor="email">E-mail</label>
             </div>
-            <div className="form-label-group">      
+            <div className="form-label-group">
                 <input
                     onChange={this.handleChange}
                     type="password"
@@ -75,24 +75,24 @@ class Signin extends Component {
                 />
                 <label htmlFor="password">Password</label>
             </div>
-            
+
             <button onClick={this.clickSubmit} className="btn btn-lg btn-primary btn-block">Log In</button>
             <br />
             <Link to="/forgot-password">
-                        {" "}
+                {" "}
                     Forgot Password?
-                </Link> 
+                </Link>
         </form>
     )
 
     render() {
 
-        const { email, password, error, redirectToReferer, loading} = this.state;
+        const { email, password, error, redirectToReferer, loading } = this.state;
         if (redirectToReferer) {
             return <Redirect to="/" />
         }
         return (
-        
+
             <div className="container">
                 <div className="row mb-3">
                     <div className="col-md-8">
@@ -100,7 +100,7 @@ class Signin extends Component {
                     </div>
                     <div className="col-md-4">
                         <h2 className="mt-4 mb-4">Sign In</h2>
-                        
+
                         {this.signinForm(email, password, loading)}
 
                         {loading ? (
@@ -110,10 +110,10 @@ class Signin extends Component {
                             )}
                         <p>
                         </p>
-                         <p>
-                         Don't have an account? <Link to='/signup'>Sign Up</Link>
-                         </p>
-                        
+                        <p>
+                            Don't have an account? <Link to='/signup'>Sign Up</Link>
+                        </p>
+
                         <div className="alert alert-danger" style={{ display: error ? "" : "none" }}>
                             {error}
                         </div>
