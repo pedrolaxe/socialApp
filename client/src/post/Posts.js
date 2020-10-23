@@ -25,18 +25,18 @@ class Posts extends Component {
             return;
         }
         const data = await list(this.state.skip)
-        
+
         if (data.error) {
             console.log(data.error)
         } else {
             var joinedArray = this.state.posts.concat(data);
-            this.setState({ posts: joinedArray}, this.updateSkip);
+            this.setState({ posts: joinedArray }, this.updateSkip);
         }
     }
 
     async componentDidMount() {
         const count = await countTotalPosts()
-        this.setState({count: count.data})
+        this.setState({ count: count.data })
         this.fetchData()
     }
 
@@ -57,15 +57,15 @@ class Posts extends Component {
                             <b>All posts rendered.. Please refresh to see new posts.</b>
                         </p>
                     }
-                    
+
                 >
-                    { posts.map((post, i) => {
+                    {posts.map((post, i) => {
                         const posterId = post.postedBy ? post.postedBy._id : "";
                         const posterName = post.postedBy ? post.postedBy.name : " Unknown";
                         return (
-                            <div key={i} className="card col-md-8 mb-5" style={{ 
-                            padding: "0",
-                            margin: "0 auto"
+                            <div key={i} className="card col-md-8 mb-5" style={{
+                                padding: "0",
+                                margin: "0 auto"
                             }} >
                                 <div className="card-header">
                                     <img
@@ -100,7 +100,7 @@ class Posts extends Component {
                                         }}
                                     />
                                 </Link>
-                                <div className="card-body">
+                                {/* <div className="card-body">
                                     <h5 className="card-title">{post.title}</h5>
                                     <p className="card-text">{post.body}</p>
                                     <Link
@@ -115,6 +115,33 @@ class Posts extends Component {
                                         className="btn btn-raised btn-sm btn-primary">
                                         Read More
                                 </Link>
+                                </div> */}
+                                <div className="card-body">
+                                    <p className="mb-3 tx-14">{post.body}</p>
+                                </div>
+                                <div className="card-footer">
+                                    <div className="d-flex post-actions">
+                                        <a href="#" className="d-flex align-items-center text-muted mr-4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-heart icon-md">
+                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                            </svg>
+                                            <p className="d-none d-md-block ml-2">Like</p>
+                                        </a>
+                                        <a href="#" className="d-flex align-items-center text-muted mr-4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-message-square icon-md">
+                                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                            </svg>
+                                            <p className="d-none d-md-block ml-2">Comment</p>
+                                        </a>
+                                        <a href="#" className="d-flex align-items-center text-muted">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-share icon-md">
+                                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                                <polyline points="16 6 12 2 8 6"></polyline>
+                                                <line x1="12" y1="2" x2="12" y2="15"></line>
+                                            </svg>
+                                            <p className="d-none d-md-block ml-2">Share</p>
+                                        </a>
+                                    </div>
                                 </div>
 
                             </div>
@@ -126,16 +153,16 @@ class Posts extends Component {
         );
     };
 
-    render(){
-        const {posts} = this.state;
-        return(
-                <div className="container">
-                    {!posts.length ? (
-                        <Loading />
-                    ) : (
-                            this.renderPosts(posts)
-                        )}
-                </div>
+    render() {
+        const { posts } = this.state;
+        return (
+            <div className="container">
+                {!posts.length ? (
+                    <Loading />
+                ) : (
+                        this.renderPosts(posts)
+                    )}
+            </div>
         );
     }
 }
