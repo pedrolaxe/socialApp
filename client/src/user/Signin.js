@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { signin, authenticate } from "../auth";
 import '../css/Signin.css';
 import Loading from '../loading/Loading';
+import HomeImage from '../images/home.jpg';
 
 
 class Signin extends Component {
@@ -96,7 +97,10 @@ class Signin extends Component {
             <div className="container">
                 <div className="row mb-3">
                     <div className="col-md-8">
-                        <img src="https://i.imgur.com/926vnAO.jpg" className="img-fluid rounded" />
+                        <img 
+                        src={HomeImage}
+                        className="img-fluid rounded"
+                        />
                     </div>
                     <div className="col-md-4">
                         <h2 className="mt-4 mb-4">Sign In</h2>

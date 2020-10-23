@@ -3,6 +3,7 @@ import { signup } from "../auth";
 import { Link } from 'react-router-dom';
 import Loading from '../loading/Loading';
 import '../css/Signin.css';
+import HomeImage from '../images/home.jpg';
 
 class Signup extends Component {
     constructor() {
@@ -107,8 +108,11 @@ class Signup extends Component {
             <div className="container">
                 <div className="row mb-3">
                     <div className="col-md-8">
-                        <img src="https://i.imgur.com/926vnAO.jpg" className="img-fluid rounded" />
-                    </div>
+                        <img 
+                            src={HomeImage}
+                            className="img-fluid rounded"
+                            /> 
+                        </div>
                     <div className="col-md-4">
                         <h2 className="mt-5 mb-5">Sign Up</h2>
 
