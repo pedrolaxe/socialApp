@@ -4,10 +4,9 @@ import { isAuthenticated } from "../auth";
 import { Redirect, Link } from 'react-router-dom';
 import { read } from "./apiUser";
 import DefaultProfile from '../images/avatar.jpg';
-import DeleteUser from './DeleteUser';
 import FollowProfileButton from './FollowProfileButton';
 import { listByUser } from '../post/apiPost';
-import '../css/Profile.css';
+import '../css/ProfileUser.css';
 
 import { Tabs, Tab } from 'react-bootstrap-tabs';
 
@@ -44,7 +43,7 @@ class Profile extends Component {
         callApi(userId, token, this.state.user._id)
             .then(data => {
                 if (data.error) {
-                    
+
                     this.setState({ error: data.error })
                 } else {
                     this.setState({ user: data, following: !this.state.following, loading: false })
@@ -112,88 +111,131 @@ class Profile extends Component {
         //console.log("USer: ", user)
         const photoUrl = user._id ? `${process.env.REACT_APP_API_URL}/user/photo/${user._id}?${new Date().getTime()}` : DefaultProfile;
         let followingBadge = <p style={{ marginBottom: "0" }}><span className="badge badge-pill badge-primary">{user.following.length}</span> Following</p>
-        let followersBadge = <p style={{ marginBottom: "0" }}><span className="badge badge-pill badge-success">{user.followers.length}</span> Followers</p>
-        let postsBadge = <p style={{ marginBottom: "0" }}><span className="badge badge-pill badge-warning">{posts.length}</span> Posts</p>
-        return <div className="user-profile">
-            <div className="row">
-                <div className="col-md-4">
-                    <div className="profile-info-left">
-                        <div className="text-center">
-                            <img 
-                                height="300"
-                                width="300"
-                                src={photoUrl} 
-                                alt={user.name} 
-                                onError={i => (i.target.src = DefaultProfile)} 
-                                className="avatar img-circle" 
-                            />
-                            <h2 className="mt-2" >{user.name}</h2>
-                        </div>
-                        <div className="action-buttons">
-                            {isAuthenticated().user && isAuthenticated().user._id === user._id ? (
-                                <>
-                                <div className="row">
-                                    <div className="col-md-4 col-xs-6">
-                                        <Link 
-                                            className="btn btn-sm btn-raised btn-primary"
-                                            to={`/post/create`}
-                                        >
-                                            Create Post
-                                        </Link>
-                                    </div>
-                                    <div className="col-md-4 col-xs-6">
-                                        <Link 
-                                        className="btn btn-sm btn-raised btn-dark"
-                                            to={`/user/edit/${user._id}`}
-                                        >
-                                            Edit Profile
-                                        </Link>
-                                    </div>
+        let followersBadge = <p style={{ marginBottom: "0" }}><span className="badge badge-pill badge-primary">{user.followers.length}</span> Followers</p>
+        let postsBadge = <p style={{ marginBottom: "0" }}><span className="badge badge-pill badge-primary">{posts.length}</span> Posts</p>
+        return <div className="container">
+            <div className="profile-page tx-13">
+                <div className="row">
+                    <div className="col-12 grid-margin">
+                        <div className="profile-header">
+                            <div className="cover">
 
-                                </div>
-                                <div className="mt-2">
-                                    <DeleteUser userId={user._id} />
-                                </div>
-                                </>
-                            ): (
-                                <div className="row">
-                                    <div className="col-md-6 col-xs-6">
-                                        <Link 
-                                            className="btn btn-sm btn-raised btn-success ml-3"
-                                            to={`/chat/${isAuthenticated().user._id}/${user._id}`}
-                                        >
-                                            Message
-                                        </Link>
+                                <div className="cover-body d-flex justify-content-between align-items-center">
+                                    <img
+                                    src={photoUrl} 
+                                    alt={user.name} 
+                                    onError={i => (i.target.src = DefaultProfile)} 
+                                    className="profile-pic mt-4 ml-4 mb-4" 
+                                    />
+                                    <span className="profile-name">{user.name}</span>
+
+                                    <div className="d-none d-md-block mr-5">
+                                    <div className="dropdown">
+                                            <button className="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-more-horizontal icon-lg text-muted pb-3px">
+                                                    <circle cx="12" cy="12" r="1"></circle>
+                                                    <circle cx="19" cy="12" r="1"></circle>
+                                                    <circle cx="5" cy="12" r="1"></circle>
+                                                </svg>
+                                            </button>
+                                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a className="dropdown-item d-flex align-items-center" href="#">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit-2 icon-sm mr-2">
+                                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                                    </svg> <span className="">Edit Profile</span></a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="col-md-6 col-xs-6">
-                                        <FollowProfileButton following={following} onButtonClick={this.clickFollowButton} />
-                                    </div>
-                                </div>                                            
-                            )}
-                            
-                        </div>
-                        <div className="section">
-                            <h3>About Me</h3>
-                            <p>{user.about}</p>
-                            <p>Username: {user.username}</p>
-                        </div>
-                        <div className="section">
-                            <h3>Statistics</h3>
-                            <p><span className="badge badge-pill badge-primary">{user.following.length}</span> Following</p>
-                            <p><span className="badge badge-pill badge-success">{user.followers.length}</span> Followers</p>
-                            <p><span className="badge badge-pill badge-warning">{posts.length}</span> Posts</p>
+                                </div>
+                            </div>
+                           
                         </div>
                     </div>
                 </div>
-                <div className="col-md-8">
-                    <div className="profile-info-right">
+            </div>
+
+            <div className="row profile-body">
+
+                <div className="col-md-4 col-xl-3">
+                    <div className="card rounded">
+                        <div className="card-body">
+                            <ul className="nav flex-column">
+                                
+                                {isAuthenticated().user && isAuthenticated().user._id === user._id ? (
+                                <>
+                                <li className="nav-item">
+                                    <Link 
+                                        className="nav-link"
+                                        to={`/post/create`}
+                                    >
+                                    Create Post
+                                    </Link>
+                                </li>
+
+                                <li className="nav-item">
+                                    <Link 
+                                        className="nav-link"
+                                        to={`/user/edit/${user._id}`}
+                                    >
+                                    Edit Profile
+                                    </Link>
+                                </li>
+                                
+                               
+                                </>
+                                ): (
+                                    <>
+                                        <li className="nav-item">
+                                            <Link 
+                                                className="nav-link"
+                                                to={`/chat/${isAuthenticated().user._id}/${user._id}`}
+                                                >
+                                                Message
+                                                </Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <FollowProfileButton following={following} onButtonClick={this.clickFollowButton} />
+                                        </li> 
+                                    </>                                          
+                                    )}
+                            </ul>
+                            <br />
+                            <div className="d-flex align-items-center justify-content-between mb-2">
+                                <h6 className="card-title font-weight-bold mb-0">About</h6>
+                            </div>
+                            <p>{user.about}</p>
+                            <div className="mt-3">
+                                <label className="tx-11 font-weight-bold mb-0">Username:</label>
+                                <p>{user.username}</p>
+                            </div>
+                            <div className="mt-3">
+                                <label className="tx-11 font-weight-bold mb-0">Followers:</label>
+                                <p>{user.followers.length}</p>
+                            </div>
+                            <div className="mt-3">
+                                <label className="tx-11 font-weight-bold mb-0">Following:</label>
+                                <p>{user.following.length}</p>
+                            </div>
+                            <div className="mt-3">
+                                <label className="tx-11 font-weight-bold mb-0">Posts:</label>
+                                <p>{posts.length}</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            
+                <div className="col-md-8 col-xl-8">
+                    <div className="row">
+
+                        <div className="col-md-12">
                         <Tabs onSelect={(index, label) => console.log(label + ' selected')}>
                             <Tab label={postsBadge} className="tab-title-name">
                                 <div className="row">
                                 {posts.map((post, i) => (
                                     <div key={i} style={{ paddingBottom: "15px" }} className="col-md-4">
                                         <Link to={`/post/${post._id}`} >
-                                            <figure className="snip1205 red">
+                                            <figure className="styleimgs red">
                                                 <img 
                                                     style={{ objectFit: "cover", padding: "0" }}
                                                     height="200"
@@ -251,9 +293,10 @@ class Profile extends Component {
                                 ))}
                             </Tab>
                         </Tabs>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div>{/* </div> Profile body */}
         </div>
     }
 
@@ -267,13 +310,13 @@ class Profile extends Component {
 
 
         return (
-            <div className="container">
-                { loading ? (
+            <>
+                {loading ? (
                     <Loading />
                 ) : (
-                    this.renderProfile()
-                ) }
-            </div>
+                        this.renderProfile()
+                    )}
+            </>
         );
     }
 }

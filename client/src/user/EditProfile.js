@@ -6,6 +6,7 @@ import { read, update, updateUser } from "./apiUser";
 import { isAuthenticated } from "../auth";
 import { Redirect } from 'react-router-dom';
 import DefaultProfile from '../images/avatar.jpg';
+import DeleteUser from './DeleteUser';
 
 
 class EditProfle extends Component {
@@ -215,11 +216,18 @@ class EditProfle extends Component {
                     onError={i => (i.target.src = DefaultProfile)}
                     alt={name} 
                 />
+
                 {loading ? (
                     <Loading />
                 ) : (
                     this.signupForm(name, username, email, password, loading, about)
                 )}
+                <br />
+                <br />
+                <hr />
+                Delete Profile?<br />
+                <DeleteUser userId={id} />
+               
             </div>
         );
     }
