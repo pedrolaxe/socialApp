@@ -4,6 +4,7 @@ import { signin, authenticate } from "../auth";
 import '../css/Signin.css';
 import Loading from '../loading/Loading';
 import HomeImage from '../images/home.jpg';
+import { isAuthenticated } from "../auth";
 
 
 class Signin extends Component {
@@ -90,6 +91,8 @@ class Signin extends Component {
 
         const { email, password, error, redirectToReferer, loading } = this.state;
         if (redirectToReferer) {
+            return <Redirect to="/" />
+        }else if(isAuthenticated()){
             return <Redirect to="/" />
         }
         return (

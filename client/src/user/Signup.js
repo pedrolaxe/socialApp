@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { signup } from "../auth";
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Loading from '../loading/Loading';
 import '../css/Signin.css';
 import HomeImage from '../images/home.jpg';
+import { isAuthenticated } from "../auth";
 
 class Signup extends Component {
     constructor() {
@@ -103,6 +104,9 @@ class Signup extends Component {
 
 
     render() {
+        if(isAuthenticated()){
+            return <Redirect to="/" />
+        }
         const { name, email, password, error, open, loading } = this.state;
         return (
             <div className="container">
