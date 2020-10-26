@@ -7,7 +7,7 @@ import { isAuthenticated } from "../auth";
 
 import Comment from './Comment';
 import DefaultProfile from '../images/avatar.jpg'
-import {timeDifference} from './timeDifference';
+import { timeDifference } from './timeDifference';
 
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -28,7 +28,7 @@ class SinglePost extends Component {
     }
 
     checkLike = (likes) => {
-        const  userId = isAuthenticated() && isAuthenticated().user._id;
+        const userId = isAuthenticated() && isAuthenticated().user._id;
         let match = likes.indexOf(userId) !== -1; //true if user found
         return match;
     };
@@ -40,9 +40,9 @@ class SinglePost extends Component {
                 if (data.error) {
                     console.log(data.error)
                 } else {
-                    this.setState({ 
-                        post: data, 
-                        likes: data.likes.length, 
+                    this.setState({
+                        post: data,
+                        likes: data.likes.length,
                         like: this.checkLike(data.likes),
                         comments: data.comments
                     });
@@ -56,7 +56,7 @@ class SinglePost extends Component {
 
     likeToggle = () => {
         this.setState({ loading: true })
-        if(!isAuthenticated()){
+        if (!isAuthenticated()) {
             this.setState({ redirectToSignin: true, loading: false })
             return false; //so that rest of code isn't executed
         }
@@ -65,30 +65,30 @@ class SinglePost extends Component {
         const postId = this.state.post._id;
         const token = isAuthenticated().token;
         callApi(userId, token, postId)
-        .then(data => {
-            if(data.error){
-                console.log(data.error)
-            } else {
-                this.setState({
-                    like: !this.state.like,
-                    likes: data.likes.length,
-                    loading: false
-                });
-            }
-        });
+            .then(data => {
+                if (data.error) {
+                    console.log(data.error)
+                } else {
+                    this.setState({
+                        like: !this.state.like,
+                        likes: data.likes.length,
+                        loading: false
+                    });
+                }
+            });
     };
 
     deletePost = () => {
         const postId = this.props.match.params.postId;
         const token = isAuthenticated().token;
         remove(postId, token)
-        .then(data => {
-            if(data.error){
-                console.log(data.error)
-            } else {
-                this.setState({redirectToHome: true})
-            }   
-        })
+            .then(data => {
+                if (data.error) {
+                    console.log(data.error)
+                } else {
+                    this.setState({ redirectToHome: true })
+                }
+            })
     }
 
     deleteConfirmed = () => {
@@ -106,7 +106,7 @@ class SinglePost extends Component {
             ]
         });
     }
-    
+
 
     renderPost = (post) => {
         const posterId = post.postedBy ? post.postedBy._id : "";
@@ -114,79 +114,113 @@ class SinglePost extends Component {
 
         const { like, likes, redirectToSignin, redirectToHome, comments } = this.state;
 
-        if(redirectToHome){
+        if (redirectToHome) {
             return <Redirect to='/'></Redirect>
-        } else if(redirectToSignin){
+        } else if (redirectToSignin) {
             return <Redirect to='/signin'></Redirect>
         }
-        return(
-            <div className="card col-md-12 mb-5" style={{ padding: "0" }} >
+        return (
+            <div className="card col-md-8 mb-5" style={{
+                padding: "0",
+                margin: "0 auto",
+            }} >
                 <div className="card-header">
-                    <img 
+                    <img
                         className="mb-1 mr-2"
-                        style={{ height: "40px", width: "40px", borderRadius: "50%"  }} 
+                        style={{ height: "40px", width: "40px", borderRadius: "50%" }}
                         src={`${process.env.REACT_APP_API_URL}/user/photo/${posterId}`}
-                        onError={i => (i.target.src = DefaultProfile)} 
+                        onError={i => (i.target.src = DefaultProfile)}
                         alt={posterName}
                     />
-                    <Link to={`/user/${posterId}`} style={{fontSize: "24px"}}>
-                            {posterName}
+                    <Link to={`/user/${posterId}`} style={{ fontSize: "24px" }}>
+                        {posterName}
                     </Link>
-                    <p
+                    <div
                         style={{ marginBottom: "0" }}
                         className="pull-right mt-2"
                     >
-                        <span className="ml-2">
-                            <i className="far fa-clock"></i>{" "+timeDifference(new Date(), new Date(post.created))}
+
+                        <span className="ml-2 pull-left">
+                            <i className="far fa-clock"></i>{" " + timeDifference(new Date(), new Date(post.created))}
                         </span>
-                    </p>
+                        {isAuthenticated().user && isAuthenticated().user._id === post.postedBy._id && (
+                            <>
+                                <div className="d-flex text-muted pull-right ml-3">
+                                    <div className="dropdown">
+                                        <button className="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-more-horizontal icon-lg text-muted pb-3px">
+                                                <circle cx="12" cy="12" r="1"></circle>
+                                                <circle cx="19" cy="12" r="1"></circle>
+                                                <circle cx="5" cy="12" r="1"></circle>
+                                            </svg>
+                                        </button>
+                                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <Link
+                                                to={`/post/edit/${post._id}`}
+                                                className="dropdown-item d-flex align-items-center">
+                                                Edit Post
+                                        </Link>
+                                            <a className="dropdown-item d-flex align-items-center" onClick={this.deleteConfirmed} href="#">
+                                                Delete
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        )}
+                    </div>
                 </div>
                 <Link to={`/post/${post._id}`}>
-                    <img 
-                        className="card-img-top" 
+                    <img
+                        className="card-img-top"
                         src={`${process.env.REACT_APP_API_URL}/post/photo/${post._id}`}
                         alt={post.title}
-                        style={{ 
-                            maxHeight: "700px",  
+                        style={{
+                            maxHeight: "700px",
                             backgroundSize: "cover",
                             backgroundRepeat: 'no-repeat',
-                            backgroundPosition: "50% 50%" }}
+                            backgroundPosition: "50% 50%"
+                        }}
                     />
                 </Link>
-                    {like ? (
-                        <h3>
-                            <i onClick={this.likeToggle} className="fa fa-heart" style={{color: "red", padding: "10px", cursor: "pointer"}} aria-hidden="true"></i>
-                            <i className="far fa-comments ml-3"></i> 
-                        </h3>
-                    ) : (
-                        <h3>
-                            <i onClick={this.likeToggle} className="fa fa-heart-o" style={{padding: "10px", cursor: "pointer"}} aria-hidden="true"></i>
-                            <i className="far fa-comments ml-3"></i> 
-                        </h3>
-                    )}
-                    <span style={{fontSize: "20px"}} className="ml-3" >{likes} Likes </span>
                 
+                {/* <span style={{ fontSize: "20px" }} className="ml-3" >{likes} Likes </span> */}
+
                 <div className="card-body">
-                    <h5 className="card-title">{post.title}</h5>
-                    <p className="card-text">{post.body}</p>
-                    <Link
-                        to={`/`}
-                        className="btn btn-raised btn-sm btn-primary mr-5">
-                        Back to posts
-                    </Link>
-                    {isAuthenticated().user && isAuthenticated().user._id === post.postedBy._id && (
-                        <>
-                            <Link
-                                to={`/post/edit/${post._id}`}
-                                className="btn btn-raised btn-sm btn-warning mr-5">
-                                    Edit Post
-                            </Link>
-                            <button onClick={this.deleteConfirmed} className="btn btn-raised btn-sm btn-danger">
-                                Delete Post
-                            </button>
-                        </>
-                    )}
+                    <p className="mb-3 tx-14">{post.body}</p>
+                </div>
+                <div className="card-footer">
+                    <div className="d-flex post-actions">
+                        {like ? (
+                            <h3>
+                                <i onClick={this.likeToggle} className="fa fa-heart" style={{ color: "red", padding: "10px", cursor: "pointer" }} aria-hidden="true"></i>
+                            </h3>
+                        ) : (
+                                <h3>
+                                    <i onClick={this.likeToggle} className="fa fa-heart-o" style={{ padding: "10px", cursor: "pointer" }} aria-hidden="true"></i>
+                                </h3>
+                            )}
+                        <p className="mt-3 mr-4 text-muted">Like</p>
+
+                        <a className="d-flex align-items-center text-muted mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-message-square icon-md comment-btn">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <p className="d-none d-md-block mt-3 ml-2">Comment</p>
+                        </a>
+                        <a href="#" className="d-flex align-items-center text-muted">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-share icon-md share-btn">
+                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                <polyline points="16 6 12 2 8 6"></polyline>
+                                <line x1="12" y1="2" x2="12" y2="15"></line>
+                            </svg>
+                            <p className="d-none d-md-block mt-3 ml-2">Share</p>
+                        </a>
+
+                    </div>
+
                     <Comment postId={post._id} comments={comments.reverse()} updateComments={this.updateComments} />
+
                 </div>
             </div>
         );
@@ -199,8 +233,8 @@ class SinglePost extends Component {
                 {(!post || loading) ? (
                     <Loading />
                 ) : (
-                    this.renderPost(post)
-                )}
+                        this.renderPost(post)
+                    )}
             </div>
         );
     }

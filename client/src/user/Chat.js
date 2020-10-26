@@ -262,9 +262,6 @@ class Chat extends Component {
                                                         }
                                                     />
                                                     <div className="input-group-append">
-                                                        {/* <button type="button" onClick={() => this.setState({ showPicker: !showPicker })} className="btn btn-sm btn-primary">
-                                                            <i style={{fontSize: "20px"}} className="far fa-smile"></i>
-                                                        </button> */}
                                                         <button
                                                             type="submit"
                                                             className="btn btn-link btn-xl"
