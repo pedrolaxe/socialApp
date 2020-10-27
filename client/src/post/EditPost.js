@@ -29,7 +29,7 @@ class EditProfle extends Component {
                 if (data.error) {
                     this.setState({ redirectToPost: true })
                 } else {
-                    this.setState({ 
+                    this.setState({
                         id: data._id,
                         title: data.title,
                         body: data.body,
@@ -49,7 +49,7 @@ class EditProfle extends Component {
 
     isValid = () => {
         const { title, body, fileSize, photo, postedBy } = this.state;
-        if(postedBy !== isAuthenticated().user._id){
+        if (postedBy !== isAuthenticated().user._id) {
             this.setState({ error: "You are not authorized to do this !!", loading: false });
             return false;
         }
@@ -58,7 +58,7 @@ class EditProfle extends Component {
             this.setState({ error: "File size should be less than 200 KB", loading: false });
             return false;
         }
-        if(photo.length === 0){
+        if (photo.length === 0) {
             this.setState({ error: "Photo is required", loading: false });
             return false;
         }
@@ -96,7 +96,7 @@ class EditProfle extends Component {
                     if (data.error) {
                         this.setState({ error: data.error, loading: false });
                     } else {
-                        this.setState({ 
+                        this.setState({
                             title: "",
                             body: "",
                             photo: "",
@@ -145,30 +145,30 @@ class EditProfle extends Component {
         </form>
     );
 
-    render(){
+    render() {
         const { id, title, body, loading, redirectToPost, error } = this.state;
         if (redirectToPost) {
             return <Redirect to={`/post/${id}`}></Redirect>
         }
         const photoUrl = `${process.env.REACT_APP_API_URL}/post/photo/${id}?${new Date().getTime()}`;
 
-        return(
-            <div className="container"> 
+        return (
+            <div className="container">
                 <h2 className="mt-5 mb-5">Edit Post - {title}</h2>
                 <div className="alert alert-danger" style={{ display: error ? "" : "none" }}>
                     {error}
                 </div>
-                <img 
-                    style={{ display: loading ? "none" : "" , height: "200px", width: "auto" }} 
-                    className="img-thumbnail" 
-                    src={photoUrl} 
-                    alt={title} 
+                <img
+                    style={{ display: loading ? "none" : "", height: "200px", width: "auto" }}
+                    className="img-thumbnail"
+                    src={photoUrl}
+                    alt={title}
                 />
                 {loading ? (
                     <Loading />
                 ) : (
-                    this.editPostForm(title, body)
-                )}
+                        this.editPostForm(title, body)
+                    )}
             </div>
         )
     }
