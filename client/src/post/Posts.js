@@ -62,6 +62,7 @@ class Posts extends Component {
                     {posts.map((post, i) => {
                         const posterId = post.postedBy ? post.postedBy._id : "";
                         const posterName = post.postedBy ? post.postedBy.name : " Unknown";
+                        //const posterUsername = post.postedBy ? post.postedBy.username : " Unknown";
                         return (
                             <div key={i} className="card col-md-8 mb-5" style={{
                                 padding: "0",
