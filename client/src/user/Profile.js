@@ -300,7 +300,6 @@ class Profile extends Component {
         </div>
     }
 
-
     render() {
         const { redirectToSignin, user, loading } = this.state;
         console.log("state user", user);

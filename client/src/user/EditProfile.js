@@ -123,6 +123,7 @@ class EditProfle extends Component {
 
     signupForm = (name, username, email, password, loading, about) => (
         <form>
+            <br />
             <div className="form-group">
                 <label className="text-muted">Profile Photo</label>
                 <input
@@ -142,10 +143,10 @@ class EditProfle extends Component {
                     className="form-control"
                     value={name}
                 />
-            </div>
-            
+            </div>      
         
             <div className="form-group">
+                <label className="text-muted">Username</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="input-group-text">@</div>
@@ -155,7 +156,7 @@ class EditProfle extends Component {
                             name="username"
                             type="text"
                             className="form-control"
-                            value={username}
+                            value={username.replace(/\s/g,'').toLowerCase()}
                             placeholder="Username"
                         />
                 </div>
@@ -211,7 +212,7 @@ class EditProfle extends Component {
                 </div>
                 <img 
                     style={{ display: loading ? "none" : "" , height: "200px", width: "auto" }} 
-                    className="img-thumbnail" 
+                    className="img-thumbnail img-circle" 
                     src={photoUrl} 
                     onError={i => (i.target.src = DefaultProfile)}
                     alt={name} 
