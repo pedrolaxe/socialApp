@@ -115,6 +115,7 @@ class Signup extends Component {
                         <img 
                             src={HomeImage}
                             className="img-fluid rounded"
+                            alt=""
                             /> 
                         </div>
                     <div className="col-md-4">

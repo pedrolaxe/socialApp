@@ -18,7 +18,6 @@ class Comment extends Component {
             text: "",
             error: "",
             chosenEmoji: null,
-            showPicker: false,
             loading: false
         }
     }
@@ -66,7 +65,6 @@ class Comment extends Component {
                     } else {
                         this.setState({
                             text: "",
-                            showPicker: false,
                             loading: false
                         });
                         // send the updated/fresh list of comments to the parent component
@@ -120,7 +118,7 @@ class Comment extends Component {
     }
 
     render() {
-        const { text, error, showPicker, loading } = this.state;
+        const { text, error, loading } = this.state;
         const { comments } = this.props;
 
         return (
@@ -190,7 +188,7 @@ class Comment extends Component {
                                                                             </svg>
                                                                         </button>
                                                                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                            <a onClick={() => this.deleteConfirmed(comment)} className="dropdown-item d-flex align-items-center" href="#">
+                                                                            <a onClick={() => this.deleteConfirmed(comment)} className="dropdown-item d-flex align-items-center" href="!#">
                                                                               <i className="fas fa-trash text-danger"></i>&nbsp;&nbsp;Delete
                                                                             </a>
                                                                         </div>

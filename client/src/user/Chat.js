@@ -27,8 +27,7 @@ class Chat extends Component {
             chatList: [],
             loading: false,
             onlineUsers: [],
-            chosenEmoji: null,
-            showPicker: false
+            chosenEmoji: null
         };
     }
 
@@ -102,7 +101,7 @@ class Chat extends Component {
         if (message) {
             socket.emit('sendMessage', message, sender, reciever, () => {
                 console.log('sent ', message);
-                this.setState({ message: '', showPicker: false })
+                this.setState({ message: ''})
             })
         }
     }
@@ -164,7 +163,7 @@ class Chat extends Component {
     }
 
     render() {
-        const { chatList, messages, reciever, sender, showPicker, loading } = this.state;
+        const { chatList, messages, reciever, sender, loading } = this.state;
         return (
 
             <div className="container">
@@ -226,6 +225,7 @@ class Chat extends Component {
                                                         src={`${process.env.REACT_APP_API_URL}/user/photo/${reciever._id}`}
                                                         width="48"
                                                         height="48"
+                                                        alt=""
                                                         style={{
                                                             borderRadius: "50%",
                                                         }}

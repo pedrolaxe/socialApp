@@ -28,7 +28,7 @@ class ForgotPassword extends Component {
             <div className="container">
                 <div className="row mb-3">
                 <div className="col-md-8">
-                        <img src="https://i.imgur.com/926vnAO.jpg" className="img-fluid rounded" />
+                        <img src="https://i.imgur.com/926vnAO.jpg" className="img-fluid rounded" alt="" />
                     </div>
                     <div className="col-md-4">
 

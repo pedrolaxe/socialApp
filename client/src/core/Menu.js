@@ -80,6 +80,7 @@ const Menu = (props) => (
                             src={`${process.env.REACT_APP_API_URL}/user/photo/${isAuthenticated().user._id}`}
                             width="32"
                             height="32"
+                            alt=""
                             style={{
                                 borderRadius: "50%",
                             }}

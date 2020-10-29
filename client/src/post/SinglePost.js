@@ -160,7 +160,7 @@ class SinglePost extends Component {
                                                 className="dropdown-item d-flex align-items-center">
                                                 Edit Post
                                         </Link>
-                                            <a className="dropdown-item d-flex align-items-center" onClick={this.deleteConfirmed} href="#">
+                                            <a className="dropdown-item d-flex align-items-center" onClick={this.deleteConfirmed} href="!#">
                                                 Delete
                                         </a>
                                         </div>
@@ -204,13 +204,13 @@ class SinglePost extends Component {
                         Like ({likes})
                         </p>
 
-                        <a className="d-flex align-items-center text-muted mr-4">
+                        <a href="!#" className="d-flex align-items-center text-muted mr-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-message-square icon-md comment-btn">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
                         <p className="d-none d-md-block mt-3 ml-2">Comment</p>
                         </a>
-                        <a href="#" className="d-flex align-items-center text-muted">
+                        <a href="!#" className="d-flex align-items-center text-muted">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-share icon-md share-btn">
                                 <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
                                 <polyline points="16 6 12 2 8 6"></polyline>
