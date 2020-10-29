@@ -125,7 +125,7 @@ class Profile extends Component {
                                     src={photoUrl} 
                                     alt={user.name} 
                                     onError={i => (i.target.src = DefaultProfile)} 
-                                    className="profile-pic mt-4 ml-4 mb-4 img-circle img-thumbnail" 
+                                    className="profile-pic mt-4 ml-4 mb-4 img-circle img-thumbnail border-primary" 
                                     />
                                     <span className="profile-name">{user.name}</span>
 

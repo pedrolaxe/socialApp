@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import '../css/Modal.css'
 
 class DeleteUser extends Component {
 
@@ -28,18 +29,26 @@ class DeleteUser extends Component {
     };
 
     deleteConfirmed = () => {
+        
         confirmAlert({
-            title: 'Are you sure ?',
-            message: 'you want to delete this account.',
-            buttons: [
-                {
-                    label: 'Yes',
-                    onClick: () => this.deleteAccount()
-                },
-                {
-                    label: 'No',
-                }
-            ]
+            customUI: ({ onClose }) => {
+                return (
+                  <div className='custom-ui'>
+                    <h1>Are you sure ?</h1>
+                    <p>You want to delete this account.</p>
+                    <button onClick={onClose}>No</button>
+                    <button
+                      className="backdanger"
+                      onClick={() => {
+                        this.deleteAccount()
+                        onClose();
+                      }}
+                    >
+                      Yes, Delete it!
+                    </button>
+                  </div>
+                );
+              }
         });
     }
 

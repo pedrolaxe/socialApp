@@ -93,17 +93,24 @@ class SinglePost extends Component {
 
     deleteConfirmed = () => {
         confirmAlert({
-            title: 'Are you sure ?',
-            message: 'you want to delete this post.',
-            buttons: [
-                {
-                    label: 'Yes',
-                    onClick: () => this.deletePost()
-                },
-                {
-                    label: 'No',
-                }
-            ]
+            customUI: ({ onClose }) => {
+                return (
+                    <div className='custom-ui'>
+                        <h1>Are you sure ?</h1>
+                        <p>You want to delete this post.</p>
+                        <button onClick={onClose}>No</button>
+                        <button
+                            className="backdanger"
+                            onClick={() => {
+                                this.deletePost()
+                                onClose();
+                            }}
+                        >
+                            Yes, Delete it!
+                    </button>
+                    </div>
+                );
+            }
         });
     }
 
@@ -160,7 +167,7 @@ class SinglePost extends Component {
                                                 className="dropdown-item d-flex align-items-center">
                                                 Edit Post
                                         </Link>
-                                            <a className="dropdown-item d-flex align-items-center" onClick={this.deleteConfirmed} href="!#">
+                                            <a className="dropdown-item d-flex align-items-center" onClick={this.deleteConfirmed} href="#">
                                                 Delete
                                         </a>
                                         </div>
@@ -183,7 +190,7 @@ class SinglePost extends Component {
                         }}
                     />
                 </Link>
-                
+
                 <div className="card-body">
                     <p className="mb-3 tx-14">{post.body}</p>
                 </div>
@@ -198,17 +205,16 @@ class SinglePost extends Component {
                                     <i onClick={this.likeToggle} className="fa fa-heart-o" style={{ padding: "10px", cursor: "pointer" }} aria-hidden="true"></i>
                                 </h3>
                             )}
-            {/* <span style={{ fontSize: "20px" }} className="ml-3" >{likes} Likes </span> */}
-
+                            
                         <p className="mt-3 mr-4 text-muted">
-                        Like ({likes})
+                            Like ({likes})
                         </p>
 
                         <a href="!#" className="d-flex align-items-center text-muted mr-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-message-square icon-md comment-btn">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
-                        <p className="d-none d-md-block mt-3 ml-2">Comment</p>
+                            <p className="d-none d-md-block mt-3 ml-2">Comment</p>
                         </a>
                         <a href="!#" className="d-flex align-items-center text-muted">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-share icon-md share-btn">
