@@ -1,4 +1,3 @@
- 
  # socialApp
 
 SocialApp is a MERN social networking
@@ -13,6 +12,7 @@ SocialApp is a MERN social networking
 * create / delete comments.
 * Like / Unlike posts.
 * Personal chat with users.
+* Find People page
 
 ## Demo 
 
