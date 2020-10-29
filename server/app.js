@@ -146,5 +146,12 @@ app.use(function(err,req,res,next){
 });
 
 server.listen(PORT, () => {
-    console.log(`API-Server started at port ${PORT}`)
+    
+    console.log("############################")
+    console.log("#                          #")
+    console.log("#   SocialApp - Server     #")
+    console.log("#                          #")
+    console.log("############################")
+    console.log("\n")
+    console.log(`API started at port ${PORT}`)
 })
