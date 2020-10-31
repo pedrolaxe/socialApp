@@ -188,9 +188,9 @@ class Comment extends Component {
                                                                             </svg>
                                                                         </button>
                                                                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                            <a onClick={() => this.deleteConfirmed(comment)} className="dropdown-item d-flex align-items-center" href="!#">
+                                                                            <Link onClick={() => this.deleteConfirmed(comment)} className="dropdown-item d-flex align-items-center" to="#">
                                                                               <i className="fas fa-trash text-danger"></i>&nbsp;&nbsp;Delete
-                                                                            </a>
+                                                                            </Link>
                                                                         </div>
                                                                     </div>
                                                                 </div>

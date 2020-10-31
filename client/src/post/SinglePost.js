@@ -167,9 +167,9 @@ class SinglePost extends Component {
                                                 className="dropdown-item d-flex align-items-center">
                                                 Edit Post
                                         </Link>
-                                            <a className="dropdown-item d-flex align-items-center" onClick={this.deleteConfirmed} href="#">
+                                            <Link className="dropdown-item d-flex align-items-center" onClick={this.deleteConfirmed} to="#">
                                                 Delete
-                                        </a>
+                                        </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -205,25 +205,25 @@ class SinglePost extends Component {
                                     <i onClick={this.likeToggle} className="fa fa-heart-o" style={{ padding: "10px", cursor: "pointer" }} aria-hidden="true"></i>
                                 </h3>
                             )}
-                            
+
                         <p className="mt-3 mr-4 text-muted">
-                            Like ({likes})
+                            Likes ({likes})
                         </p>
 
-                        <a href="!#" className="d-flex align-items-center text-muted mr-4">
+                        <Link to="#" className="d-flex align-items-center text-muted mr-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-message-square icon-md comment-btn">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
                             <p className="d-none d-md-block mt-3 ml-2">Comment</p>
-                        </a>
-                        <a href="!#" className="d-flex align-items-center text-muted">
+                        </Link>
+                        <Link to="#" className="d-flex align-items-center text-muted">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-share icon-md share-btn">
                                 <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
                                 <polyline points="16 6 12 2 8 6"></polyline>
                                 <line x1="12" y1="2" x2="12" y2="15"></line>
                             </svg>
                             <p className="d-none d-md-block mt-3 ml-2">Share</p>
-                        </a>
+                        </Link>
 
                     </div>
 
