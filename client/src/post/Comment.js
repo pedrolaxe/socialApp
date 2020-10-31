@@ -189,7 +189,7 @@ class Comment extends Component {
                                                                         </button>
                                                                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                                             <Link onClick={() => this.deleteConfirmed(comment)} className="dropdown-item d-flex align-items-center" to="#">
-                                                                              <i className="fas fa-trash text-danger"></i>&nbsp;&nbsp;Delete
+                                                                                <i className="fas fa-trash text-danger"></i>&nbsp;&nbsp;Delete
                                                                             </Link>
                                                                         </div>
                                                                     </div>

@@ -5,8 +5,8 @@ import Footer from './core/Footer';
 
 const App = () => (
   <BrowserRouter>
-  <MainRouter />
-   
+    <MainRouter />
+
     <Footer />
   </BrowserRouter>
 );

@@ -7,10 +7,10 @@
     "start": "node app.js"
   },
   "author": "Pedro Laxe",
-  "license": "ISC",
-    "bugs": {
-      "url": "https://github.com/pedrolaxe/socialApp/issues"
-    },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pedrolaxe/socialApp/issues"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
