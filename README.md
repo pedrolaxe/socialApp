@@ -49,5 +49,6 @@ To create a production bundle, use `npm run build` or `yarn build`.
 - [ ] Improve performance - decrease loading time.
 - [ ] Display status of users online/offline in chat.
 - [ ] Add Notifications when someone follows/messages you or likes/comments on your post. 
+- [ ] Create seach page and search people
 
 
