@@ -24,4 +24,7 @@ body{
 a:hover{
     text-decoration: none;
 }
-  
+/* Upload */
+.file-upload input[type='file'] {
+    display: none;
+  }

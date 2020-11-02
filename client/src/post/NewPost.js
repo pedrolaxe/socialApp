@@ -4,7 +4,7 @@ import { create } from "./apiPost";
 import { isAuthenticated } from "../auth";
 import Loading from '../loading/Loading';
 import { Redirect } from 'react-router-dom';
-
+import '../css/Global.css'
 
 
 class NewPost extends Component {
@@ -25,7 +25,7 @@ class NewPost extends Component {
 
     componentDidMount() {
         this.postData = new FormData();
-        this.setState({user: isAuthenticated().user});
+        this.setState({ user: isAuthenticated().user });
     }
 
     isValid = () => {
@@ -34,7 +34,7 @@ class NewPost extends Component {
             this.setState({ error: "File size should be less than 1 MB", loading: false });
             return false;
         }
-        if(photo.length === 0){
+        if (photo.length === 0) {
             this.setState({ error: "Photo is required", loading: false });
             return false;
         }
@@ -72,7 +72,7 @@ class NewPost extends Component {
                     if (data.error) {
                         this.setState({ error: data.error, loading: false });
                     } else {
-                        this.setState({ 
+                        this.setState({
                             title: "",
                             body: "",
                             photo: "",
@@ -87,15 +87,19 @@ class NewPost extends Component {
 
     newPostForm = (title, body) => (
         <form>
+
             <div className="form-group">
-                <label className="text-muted">Photo</label>
+
+                <label for="fileUpload" className="file-upload btn btn-primary  rounded-pill shadow"><i className="fa fa-upload mr-2"></i>Browse for file ...
                 <input
-                    onChange={this.handleChange}
-                    name="photo"
-                    type="file"
-                    accept="image/*"
-                    className="form-control"
-                />
+                        onChange={this.handleChange}
+                        name="photo"
+                        type="file"
+                        accept="image/*"
+                        className="form-control"
+                        id="upload"
+                    />
+                </label>
             </div>
             <div className="form-group">
                 <label className="text-muted">Title</label>
@@ -108,7 +112,7 @@ class NewPost extends Component {
                 />
             </div>
             <div className="form-group">
-                <label className="text-muted">Body</label>
+                <label className="text-muted">Description</label>
                 <textarea
                     onChange={this.handleChange}
                     type="text"
@@ -138,8 +142,8 @@ class NewPost extends Component {
                 {loading ? (
                     <Loading />
                 ) : (
-                    this.newPostForm(title, body)
-                )}
+                        this.newPostForm(title, body)
+                    )}
             </div>
         );
     }
