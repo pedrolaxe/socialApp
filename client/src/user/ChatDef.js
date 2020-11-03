@@ -77,7 +77,7 @@ class Chat extends Component {
                                                     <input className="form-control" placeholder="Search" />
                                                     <div className="input-group-btn">
                                                         <button type="button" className="btn btn-info">
-                                                            <i className="fa fa-search"></i>
+                                                            
                                                         </button>
                                                     </div>
                                                 </div>

@@ -267,7 +267,7 @@ class Profile extends Component {
                                             <Link to={`/user/${person._id}`} >
                                                 {person.name}
                                                 </Link><br /><span className="text-muted username">@{person.name}</span>
-                                            {/* <button type="button" className="btn btn-sm btn-toggle-following pull-right"><i className="fa fa-checkmark-round"></i> <span>Following</span></button> */}
+                                            {/* <button type="button" className="btn btn-sm btn-toggle-following pull-right"><span>Following</span></button> */}
                                         </div>
                                     </div>
                                 ))}
@@ -285,9 +285,8 @@ class Profile extends Component {
                                         <div className="media-body">
                                             <Link to={`/user/${person._id}`} >
                                                 { person.name }</Link>
-                                                <br /><span className="text-muted username">@{person.name}</span>
-                                            
-                                            {/* <button data-index = {person._id} onClick={this.unfollowClick} type="button" className="btn btn-sm btn-toggle-following pull-right"><i className="fa fa-checkmark-round"></i> <span>Unfollow</span></button> */}
+                                                <br /><span className="text-muted username">@{person.name}</span>                                            
+                                            {/* <button data-index = {person._id} onClick={this.unfollowClick} type="button" className="btn btn-sm btn-toggle-following pull-right"><span>Unfollow</span></button> */}
                                         </div>
                                     </div>
                                 ))}
