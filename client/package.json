@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "author": "Pedro Laxe",
-  "license": "ISC",
+  "license": "MIT",
     "bugs": {
       "url": "https://github.com/pedrolaxe/socialApp/issues"
     },

@@ -81,7 +81,7 @@ class Posts extends Component {
                                     </Link>
                                     <p
                                         style={{ marginBottom: "0" }}
-                                        className="pull-right mt-2"
+                                        className="float-right mt-2"
                                     >
                                         <span className="ml-2">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

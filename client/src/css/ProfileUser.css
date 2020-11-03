@@ -394,6 +394,13 @@ img {
     transform: translate(-50%, -50%) scale(1);
     transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
+
+  .icon-like{
+    display: none;
+  }
+  figure.styleimgs:hover .icon-like{
+    display: block;
+  }
   
   .nav-tabs .nav-item a.active{
     border-bottom: .214rem solid transparent;
