@@ -64,7 +64,7 @@ class Posts extends Component {
                         const posterName = post.postedBy ? post.postedBy.name : " Unknown";
                         //const posterUsername = post.postedBy ? post.postedBy.username : " Unknown";
                         return (
-                            <div key={i} className="card col-md-8 mb-5" style={{
+                            <div key={i} className="card col-xs-8 col-md-8 col-lg-8" style={{
                                 padding: "0",
                                 margin: "0 auto"
                             }} >
