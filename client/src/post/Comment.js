@@ -94,17 +94,24 @@ class Comment extends Component {
 
     deleteConfirmed = (comment) => {
         confirmAlert({
-            title: 'Are you sure ?',
-            message: 'you want to delete this comment.',
-            buttons: [
-                {
-                    label: 'Yes',
-                    onClick: () => this.deleteComment(comment)
-                },
-                {
-                    label: 'No',
-                }
-            ]
+            customUI: ({ onClose }) => {
+                return (
+                    <div className='custom-ui'>
+                        <h1>Are you sure ?</h1>
+                        <p>You want to delete this comment.</p>
+                        <button onClick={onClose}>No</button>
+                        <button
+                            className="backdanger"
+                            onClick={() => {
+                                this.deleteComment(comment)
+                                onClose();
+                            }}
+                        >
+                            Yes, Delete it!
+                    </button>
+                    </div>
+                );
+            }
         });
     }
 
@@ -169,7 +176,7 @@ class Comment extends Component {
                                                 <img
                                                     src={`${process.env.REACT_APP_API_URL}/user/photo/${comment.postedBy._id}`}
                                                     onError={i => (i.target.src = DefaultProfile)}
-                                                    alt={comment.postedBy.name}
+                                                    alt={comment.postedBy.username}
                                                     className="rounded-circle z-depth-2 mr-2"
                                                 />
                                             </Link>
@@ -209,7 +216,7 @@ class Comment extends Component {
                                                     </span>
                                                 </span>
                                                 <Link to={`/user/${comment.postedBy._id}`} >
-                                                    <strong className="text-success">{comment.postedBy.name}</strong>
+                                                    <strong className="text-success">{comment.postedBy.username}</strong>
                                                 </Link>
                                                 <p>
                                                     {comment.text}

@@ -129,9 +129,9 @@ exports.getPostPhotoRn = (req,res) => {
 
 exports.postsByUser = (req, res) => {
     Post.find({postedBy: req.profile._id})
-    .populate("postedBy", "_id name")
-    .populate('comments.postedBy', '_id name')
-    .populate('postedBy', '_id name')
+    .populate("postedBy", "_id name username")
+    .populate('comments.postedBy', '_id name username')
+    .populate('postedBy', '_id name username')
     .select('_id title body created likes comments updated')
     .sort({created: -1})
     .exec((err, posts) => {
@@ -281,8 +281,8 @@ exports.comment = (req, res) => {
     let comment = req.body.comment;
     comment.postedBy = req.body.userId
     Post.findByIdAndUpdate(req.body.postId, { $push: {comments: comment} }, {new: true})
-    .populate('comments.postedBy','_id name')
-    .populate('postedBy', '_id name')
+    .populate('comments.postedBy','_id name username')
+    .populate('postedBy', '_id name username')
     .exec((err, result) => {
         if(err){
             return res.status(400).json({
@@ -299,8 +299,8 @@ exports.uncomment = (req, res) => {
     //comment, postId and userId comes from frontend
     let comment = req.body.comment;
     Post.findByIdAndUpdate(req.body.postId, { $pull: {comments: {_id: comment._id}} }, {new: true})
-    .populate('comments.postedBy','_id name')
-    .populate('postedBy', '_id name')
+    .populate('comments.postedBy','_id name username')
+    .populate('postedBy', '_id name username')
     .exec((err, result) => {
         if(err){
             return res.status(400).json({
