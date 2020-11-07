@@ -27,9 +27,9 @@ exports.getPosts = (req,res) => {
     const posts = Post.find()
     .skip(parseInt(skip))
     .limit(2)
-    .populate("postedBy", "_id name")
+    .populate("postedBy", "_id name username")
     .populate('comments','text created')
-    .populate('comments.postedBy','_id name')
+    .populate('comments.postedBy','_id name username')
     .select("_id title body created likes")
     .sort({created: -1})
     .then((posts) => {
