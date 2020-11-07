@@ -118,8 +118,10 @@ class SinglePost extends Component {
     renderPost = (post) => {
         const posterId = post.postedBy ? post.postedBy._id : "";
         const posterName = post.postedBy ? post.postedBy.name : " Unknown";
+        const posterUsername = post.postedBy ? post.postedBy.username : " Unknown";
 
         const { like, likes, redirectToSignin, redirectToHome, comments } = this.state;
+        console.log("POST: ", post)
 
         if (redirectToHome) {
             return <Redirect to='/'></Redirect>
@@ -132,27 +134,32 @@ class SinglePost extends Component {
                 margin: "0 auto",
             }} >
                 <div className="card-header">
-                    <img
-                        className="mb-1 mr-2"
-                        style={{ height: "40px", width: "40px", borderRadius: "50%" }}
-                        src={`${process.env.REACT_APP_API_URL}/user/photo/${posterId}`}
-                        onError={i => (i.target.src = DefaultProfile)}
-                        alt={posterName}
-                    />
-                    <Link to={`/user/${posterId}`} style={{ fontSize: "24px" }}>
-                        {posterName}
-                    </Link>
+                    <div className="d-flex flex-row align-items-center float-left">
+                        <img
+                            className="mb-1 mr-2"
+                            style={{ height: "40px", width: "40px", borderRadius: "50%" }}
+                            src={`${process.env.REACT_APP_API_URL}/user/photo/${posterId}`}
+                            onError={i => (i.target.src = DefaultProfile)}
+                            alt={posterName}
+                        />
+                        <div>
+                            <h2 className="h6 mb-0">
+                                <Link to={`/user/${posterId}`} style={{ fontSize: "24px" }}>
+                                    {posterUsername ? posterUsername : posterName}
+                                </Link>
+                            </h2>
+                            <p className="small text-muted mb-0">
+                                {" " + timeDifference(new Date(), new Date(post.created))}
+                            </p>
+                        </div>
+                    </div>
+
+
                     <div
                         style={{ marginBottom: "0" }}
                         className="float-right mt-2"
                     >
 
-                        <span className="ml-2 float-left">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fillRule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" />
-                                <path fillRule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z" />
-                            </svg>&nbsp;{" " + timeDifference(new Date(), new Date(post.created))}
-                        </span>
                         {isAuthenticated().user && isAuthenticated().user._id === post.postedBy._id && (
                             <>
                                 <div className="d-flex text-muted float-right ml-3">

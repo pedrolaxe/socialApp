@@ -6,9 +6,9 @@ const Post = require('../models/post');
 
 exports.postById = (req, res, next, id) => {
     Post.findById(id)
-    .populate("postedBy", "_id name")
-    .populate('comments.postedBy', '_id name')
-    .populate('postedBy', '_id name')
+    .populate("postedBy", "_id name username")
+    .populate('comments.postedBy', '_id name username')
+    .populate('postedBy', '_id name username')
     .select('_id title body created likes comments photo')
     .exec((err, post) => {
         if(err || !post){
@@ -40,8 +40,8 @@ exports.getPosts = (req,res) => {
 
 exports.getAllPostsRn = (req,res) => {
     const posts = Post.find()
-    .populate('comments.postedBy', '_id name updated')
-    .populate('postedBy', '_id name updated')
+    .populate('comments.postedBy', '_id name username updated')
+    .populate('postedBy', '_id name username updated')
     .select('_id title body created likes comments updated')
     .sort({created: -1})
     .then((posts) => {

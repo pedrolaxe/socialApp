@@ -6,8 +6,8 @@ const User = require('../models/user');
 
 exports.userById = (req, res, next, id) => {
     User.findById(id)
-    .populate('following','_id name')
-    .populate('followers','_id name')
+    .populate('following','_id name username')
+    .populate('followers','_id name username')
     .select('name email created about following followers username') //Pedro Laxe
     .exec((err, user) => {
         if(err || !user){
@@ -40,8 +40,8 @@ exports.allUsers = (req,res) => {
         return res.json(users);
     })
     .select("name username email updated created about following followers notificationToken")
-    .populate('following','_id name email')
-    .populate('followers','_id name email');
+    .populate('following','_id name email username')
+    .populate('followers','_id name email username');
 };
 
 exports.getUser = (req, res) => {
