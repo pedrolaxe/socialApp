@@ -14,9 +14,6 @@ SocialApp is a MERN social networking
 * Personal chat with users.
 * Find People page
 
-## Demo 
-
-
 ## To run the project locally
 
 * clone this Repository by `git clone https://github.com/pedrolaxe/socialApp.git`.
@@ -49,5 +46,6 @@ To create a production bundle, use `npm run build` or `yarn build`.
 - [ ] Display status of users online/offline in chat.
 - [ ] Add Notifications when someone follows/messages you or likes/comments on your post. 
 - [ ] Create seach page and add seach on menu bar
+
 
 
