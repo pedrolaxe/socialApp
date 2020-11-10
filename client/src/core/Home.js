@@ -5,7 +5,7 @@ import { isAuthenticated } from "../auth";
 
 const Home = () => (
     <>
-        <div className="container">
+        
         {isAuthenticated() && (
                 <>
                     <Posts />
@@ -17,7 +17,7 @@ const Home = () => (
                 </>
             )}
             
-        </div>
+        
 
     </>
 );
