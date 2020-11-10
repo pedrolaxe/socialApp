@@ -46,7 +46,7 @@ class Posts extends Component {
 
     renderPosts = (posts) => {
         return (
-            <div className="row">
+            <div className="row" style={{margin: "0 auto"}}>
                 <InfiniteScroll
                     dataLength={posts.length}
                     next={this.fetchData}
@@ -64,7 +64,7 @@ class Posts extends Component {
                         const posterName = post.postedBy ? post.postedBy.name : " Unknown";
                         const posterUsername = post.postedBy ? post.postedBy.username : " Unknown";
                         return (
-                            <div key={i} className="card col-xs-8 col-md-8 col-lg-8" style={{
+                            <div key={i} className="card col-md-8" style={{
                                 padding: "0",
                                 margin: "0 auto",
                                 marginBottom: "50px"
@@ -144,13 +144,13 @@ class Posts extends Component {
     render() {
         const { posts } = this.state;
         return (
-            <div className="container">
-                {!posts.length ? (
+            
+                !posts.length ? (
                     <Loading />
                 ) : (
                         this.renderPosts(posts)
-                    )}
-            </div>
+                    )
+            
         );
     }
 }
