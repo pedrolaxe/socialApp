@@ -2,6 +2,9 @@
 
 SocialApp is a MERN social networking
 
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://mit-license.org/)
+
+
 ## Features
 
 * SignUp / SignIn.
