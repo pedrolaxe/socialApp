@@ -4,6 +4,8 @@
 SocialApp is a MERN social networking
 
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://mit-license.org/)
+
+
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)]()
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)]()
 
